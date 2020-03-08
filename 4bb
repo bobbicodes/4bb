@@ -1878,6 +1878,7 @@ are contained in the input sequence."
 
 (defn next-prob! []
   (println (colorize "\nNICE! Here's the next one:" :green))
+  (println (char 7))
   (Thread/sleep 1500)
   (spit "answers/prob-num"
         (inc (read-string (slurp "answers/prob-num"))))
