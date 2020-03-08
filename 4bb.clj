@@ -1,6 +1,6 @@
 (ns forebb
-  (:require [clojure.java.shell :as shell]
-   [clojure.string :as str]))
+  (:require [clojure.set]
+            [clojure.string :as str]))
 
 (def problems
   [{:_id         1
@@ -1893,8 +1893,8 @@ are contained in the input sequence."
 
 (defn safe-eval [ans]
   (try (eval (read-string ans))
-    (catch Exception e
-      false)))
+       (catch Exception _
+         false)))
 
 (defn submit [ans n]
   (let [tests (:tests (problems (dec n)))
