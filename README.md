@@ -11,6 +11,14 @@ Run 4clojure problems with babashka right from your shell. Even do it over ssh!
 
 Your answers and progress are stored in the `answers` directory.
 
+## Test
+
+To run tests:
+
+```
+$ bb tests.clj
+```
+
 ## TODO
 
 - [ ] Reject answers containing "restricted" functions
