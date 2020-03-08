@@ -6,7 +6,8 @@
   [{:_id         1
     :title       "Nothing but the Truth"
     :tests       ["(= __ true)"]
-    :description "Complete the expression so it will evaluate to true."}
+    :description "Complete the expression so
+it will evaluate to true."}
 
  {:_id         2
   :title       "Simple Math"
@@ -22,7 +23,8 @@ so you can use Java string methods on them."}
  {:_id         4
   :title       "Lists"
   :tests       ["(= (list __) '(:a :b :c))"]
-  :description "Lists can be constructed with either a function or a quoted form."}
+  :description "Lists can be constructed with either
+a function or a quoted form."}
 
  {:_id         5
   :title       "conj on lists"
@@ -130,7 +132,8 @@ of all the items of s for which (f item) returns true."}
   :tests       ["(= (__ [1 2 3 4 5]) 5)"
                 "(= (__ '(5 4 3)) 3)"
                 "(= (__ [\"b\" \"c\" \"d\"]) \"d\")"]
-  :description "Write a function which returns the last element in a sequence."}
+  :description "Write a function which returns
+the last element in a sequence."}
 
  {:_id         20
   :title       "Penultimate Element"
@@ -147,7 +150,8 @@ the second to last element from a sequence."}
                 "(= (__ [:a :b :c] 0) :a)"
                 "(= (__ [1 2 3 4] 1) 2)"
                 "(= (__ '([1 2] [3 4] [5 6]) 2) [5 6])"]
-  :description "Write a function which returns the Nth element from a sequence."}
+  :description "Write a function which returns
+the Nth element from a sequence."}
 
  {:_id         22
   :restricted  ["count"]
@@ -157,7 +161,8 @@ the second to last element from a sequence."}
                 "(= (__ [[1 2] [3 4] [5 6]]) 3)"
                 "(= (__ '(13)) 1)"
                 "(= (__ '(:a :b :c)) 3)"]
-  :description "Write a function which returns the total number of elements in a sequence."
+  :description "Write a function which returns
+the total number of elements in a sequence."
   :tags        ["easy" "seqs" "core-functions"]}
 
  {:_id         23
@@ -176,7 +181,8 @@ the second to last element from a sequence."}
                 "(= (__ #{4 2 1}) 7)"
                 "(= (__ '(0 0 -1)) -1)"
                 "(= (__ '(1 10 3)) 14)"]
-  :description "Write a function which returns the sum of a sequence of numbers."
+  :description "Write a function which returns
+the sum of a sequence of numbers."
   :tags        ["easy" "seqs"]}
 
  {:_id         25
@@ -185,7 +191,8 @@ the second to last element from a sequence."}
                 "(= (__ [4 2 1 6]) '(1))"
                 "(= (__ [2 2 4 6]) '())"
                 "(= (__ [1 1 1 3]) '(1 1 1 3))"]
-  :description "Write a function which returns only the odd numbers from a sequence."
+  :description "Write a function which returns
+only the odd numbers from a sequence."
   :tags        ["easy" "seqs"]}
 
  {:_id         26
@@ -193,7 +200,8 @@ the second to last element from a sequence."}
   :tests       ["(= (__ 3) '(1 1 2))"
                 "(= (__ 6) '(1 1 2 3 5 8))"
                 "(= (__ 8) '(1 1 2 3 5 8 13 21))"]
-  :description "Write a function which returns the first X fibonacci numbers."
+  :description "Write a function which returns
+the first X fibonacci numbers."
   :tags        ["easy" "Fibonacci" "seqs"]}
 
  {:_id         27
@@ -241,7 +249,8 @@ consecutive duplicates from a sequence."
   :tests       ["(= (__ [1 1 2 1 1 1 3 3]) '((1 1) (2) (1 1 1) (3 3)))"
                 "(= (__ [:a :a :b :b :c]) '((:a :a) (:b :b) (:c)))"
                 "(= (__ [[1 2] [1 2] [3 4]]) '(([1 2] [1 2]) ([3 4])))"]
-  :description "Write a function which packs consecutive duplicates into sub-lists."
+  :description "Write a function which
+packs consecutive duplicates into sub-lists."
   :tags        ["easy" "seqs"]}
 
  {:_id         32
@@ -250,7 +259,8 @@ consecutive duplicates from a sequence."
                 "(= (__ [:a :a :b :b]) '(:a :a :a :a :b :b :b :b))"
                 "(= (__ [[1 2] [3 4]]) '([1 2] [1 2] [3 4] [3 4]))"
                 "(= (__ [44 33]) [44 44 33 33])"]
-  :description "Write a function which duplicates each element of a sequence."
+  :description "Write a function which
+duplicates each element of a sequence."
   :tags        ["easy" "seqs"]}
 
  {:_id         33
@@ -333,7 +343,8 @@ the items of a sequence by an arbitrary value."
   :tests       ["(= (__ [1 2 3 4 5 6 7 8] 3) [1 2 4 5 7 8])"
                 "(= (__ [:a :b :c :d :e :f] 2) [:a :c :e])"
                 "(= (__ [1 2 3 4 5 6] 4) [1 2 3 5 6])"]
-  :description "Write a function which drops every Nth item from a sequence."
+  :description "Write a function which
+drops every Nth item from a sequence."
   :tags        ["easy" "seqs"]}
 
  {:_id         42
@@ -361,13 +372,15 @@ interleave process into x number of subsequences."
                 "(= (__ 6 [1 2 3 4 5]) '(2 3 4 5 1))"
                 "(= (__ 1 '(:a :b :c)) '(:b :c :a))"
                 "(= (__ -4 '(:a :b :c)) '(:c :a :b))"]
-  :description "Write a function which can rotate a sequence in either direction."
+  :description "Write a function which
+can rotate a sequence in either direction."
   :tags        ["medium" "seqs"]}
 
  {:_id         45
   :title       "Intro to Iterate"
   :tests       ["(= __ (take 5 (iterate #(+ 3 %) 1)))"]
-  :description "The iterate function can be used to produce an infinite lazy sequence."
+  :description "The iterate function can be used to produce
+an infinite lazy sequence."
   :tags        ["easy" "seqs"]}
 
  {:_id         46
@@ -386,7 +399,8 @@ flips the order of the arguments of an input function."
                 "(contains? [1 1 1 1 1] __)"
                 "(contains? {4 :a 2 :b} __)" 
                 "(not (contains? [1 2 4] __))"]
-  :description "The contains? function checks if a KEY is present in a given collection.
+  :description "The contains? function checks if a KEY
+is present in a given collection.
 This often leads beginner clojurians to use it incorrectly
 with numerically indexed collections like vectors and lists."
   :tags        ["easy"]}
@@ -395,7 +409,8 @@ with numerically indexed collections like vectors and lists."
   :title       "Intro to some"
   :tests       ["(= __ (some #{2 7 6} [5 6 7 8]))" 
                 "(= __ (some #(when (even? %) %) [5 6 7 8]))"]
-  :description "The some function takes a predicate function and a collection.
+  :description "The some function takes
+a predicate function and a collection.
 It returns the first logical true value of (predicate x)
 where x is an item in the collection."
   :tags        ["easy"]}
@@ -406,7 +421,8 @@ where x is an item in the collection."
   :tests       ["(= (__ 3 [1 2 3 4 5 6]) [[1 2 3] [4 5 6]])"
                 "(= (__ 1 [:a :b :c :d]) [[:a] [:b :c :d]])"
                 "(= (__ 2 [[1 2] [3 4] [5 6]]) [[[1 2] [3 4]] [[5 6]]])"]
-  :description "Write a function which will split a sequence into two parts."
+  :description "Write a function which will
+split a sequence into two parts."
   :tags        ["easy" "seqs" "core-functions"]}
 
  {:_id         50
@@ -414,7 +430,8 @@ where x is an item in the collection."
   :tests       ["(= (set (__ [1 :a 2 :b 3 :c])) #{[1 2 3] [:a :b :c]})"
                 "(= (set (__ [:a \"foo\"  \"bar\" :b])) #{[:a :b] [\"foo\" \"bar\"]})"
                 "(= (set (__ [[1 2] :a [3 4] 5 6 :b])) #{[[1 2] [3 4]] [:a :b] [5 6]})"]
-  :description "Write a function which takes a sequence consisting of items with different types
+  :description "Write a function which takes
+a sequence consisting of items with different types
 and splits them up into a set of homogeneous sub-sequences.
 The internal order of each sub-sequence should be maintained,
 but the sub-sequences themselves can be returned in any order
@@ -424,13 +441,15 @@ but the sub-sequences themselves can be returned in any order
  {:_id         51
   :title       "Advanced Destructuring"
   :tests       ["(= [1 2 [3 4 5] [1 2 3 4 5]] (let [[a b & c :as d] __] [a b c d]))"]
-  :description "Here is an example of some more sophisticated destructuring."
+  :description "Here is an example of some
+more sophisticated destructuring."
   :tags        ["easy" "destructuring"]}
 
  {:_id         52
   :title       "Intro to Destructuring"
   :tests       ["(= [2 4] (let [[a b c d e f g] (range)] __))"]
-  :description "Let bindings and function parameter lists support destructuring."
+  :description "Let bindings and function parameter lists
+support destructuring."
   :tags        ["easy" "destructuring"]}
 
  {:_id         53
@@ -441,8 +460,10 @@ but the sub-sequences themselves can be returned in any order
                 "(= (__ [7 6 5 4]) [])"]
   :description "Given a vector of integers,
 find the longest consecutive sub-sequence of increasing numbers.
-If two sub-sequences have the same length, use the one that occurs first.
-An increasing sub-sequence must have a length of 2 or greater to qualify."
+If two sub-sequences have the same length,
+use the one that occurs first.
+An increasing sub-sequence must have
+a length of 2 or greater to qualify."
   :tags        ["hard" "seqs"]}
 
  {:_id         54
@@ -451,7 +472,8 @@ An increasing sub-sequence must have a length of 2 or greater to qualify."
   :tests       ["(= (__ 3 (range 9)) '((0 1 2) (3 4 5) (6 7 8)))"
                 "(= (__ 2 (range 8)) '((0 1) (2 3) (4 5) (6 7)))"
                 "(= (__ 3 (range 8)) '((0 1 2) (3 4 5)))"]
-  :description "Write a function which returns a sequence of lists of x items each.
+  :description "Write a function which returns
+a sequence of lists of x items each.
 Lists of less than x items should not be returned."
   :tags        ["medium" "seqs" "core-functions"]}
 
@@ -473,7 +495,8 @@ of each distinct item in a sequence."
                 "(= (__ [:a :a :b :b :c :c]) [:a :b :c])"
                 "(= (__ '([2 4] [1 2] [1 3] [1 3])) '([2 4] [1 2] [1 3]))"
                 "(= (__ (range 50)) (range 50))"]
-  :description "Write a function which removes the duplicates from a sequence.
+  :description "Write a function which
+removes the duplicates from a sequence.
 Order of the items must be maintained."
   :tags        ["medium" "seqs" "core-functions"]}
 
@@ -481,7 +504,8 @@ Order of the items must be maintained."
   :title       "Simple Recursion"
   :tests       ["(= __ ((fn foo [x] (when (> x 0) (conj (foo (dec x)) x))) 5))"]
   :description "A recursive function is a function which calls itself.
-This is one of the fundamental techniques used in functional programming."
+This is one of the fundamental techniques
+used in functional programming."
   :tags        ["elementary" "recursion"]}
 
  {:_id         58
@@ -491,7 +515,8 @@ This is one of the fundamental techniques used in functional programming."
                 "(= 5 ((__ (partial + 3) second) [1 2 3 4]))"
                 "(= true ((__ zero? #(mod % 8) +) 3 5 7 9))"
                 "(= \"HELLO\" ((__ #(.toUpperCase %) #(apply str %) take) 5 \"hello world\"))"]
-  :description "Write a function which allows you to create function compositions.
+  :description "Write a function which
+allows you to create function compositions.
 The parameter list should take a variable number of functions,
 and create a function applies them from right-to-left."
   :tags        ["medium" "higher-order-functions" "core-functions"]}
@@ -546,7 +571,8 @@ and a vector of values and constructs a map from them."
   :tests       ["(= (take 5 (__ #(* 2 %) 1)) [1 2 4 8 16])"
                 "(= (take 100 (__ inc 0)) (take 100 (range)))"
                 "(= (take 9 (__ #(inc (mod % 3)) 1)) (take 9 (cycle [1 2 3])))"]
-  :description "Given a side-effect free function f and an initial value x
+  :description "Given a side-effect free function f
+and an initial value x
 write a function which returns an infinite lazy sequence
 of x, (f x), (f (f x)), (f (f (f x))), etc."
   :tags        ["easy" "seqs" "core-functions"]}
@@ -569,7 +595,8 @@ of corresponding items in the order they appear in s."
   :tests       ["(= 15 (reduce __ [1 2 3 4 5]))"
                 "(=  0 (reduce __ []))"
                 "(=  6 (reduce __ 1 [2 3]))"]
-  :description "Reduce takes a 2 argument function and an optional starting value.
+  :description "Reduce takes a 2 argument function
+and an optional starting value.
 It then applies the function to the first 2 items in the sequence
 (or the starting value and the first element of the sequence).
 In the next iteration the function will be called on
@@ -613,7 +640,8 @@ number of prime numbers."
  {:_id         68
   :title       "Recurring Theme"
   :tests       ["(= __\n  (loop [x 5\n         result []]\n    (if (> x 0)\n      (recur (dec x) (conj result (+ 2 x)))\n      result)))"]
-  :description "Clojure only has one non-stack-consuming looping construct: recur.
+  :description "Clojure only has one
+non-stack-consuming looping construct: recur.
 Either a function or a loop can be used as the recursion point.
 Either way, recur rebinds the bindings
 of the recursion point to the values it is passed.
@@ -627,8 +655,10 @@ and calling it elsewhere will result in an error."
   :tests       ["(= (__ * {:a 2, :b 3, :c 4} {:a 2} {:b 2} {:c 5})\n   {:a 4, :b 6, :c 20})"
                 "(= (__ - {1 10, 2 20} {1 3, 2 10, 3 15})\n   {1 7, 2 10, 3 15})"
                 "(= (__ concat {:a [3], :b [6]} {:a [4 5], :c [8 9]} {:b [7]})\n   {:a [3 4 5], :b [6 7], :c [8 9]})"]
-  :description "Write a function which takes a function f and a variable number of maps.
-Your function should return a map that consists of the rest of the maps conj-ed onto the first.
+  :description "Write a function which takes
+a function f and a variable number of maps.
+Your function should return a map
+that consists of the rest of the maps conj-ed onto the first.
 If a key occurs in more than one map,
 the mapping(s) from the latter (left-to-right)
 should be combined with the mapping in the result
@@ -640,8 +670,10 @@ by calling (f val-in-result val-in-latter)"
   :tests       ["(= (__  \"Have a nice day.\")\n   [\"a\" \"day\" \"Have\" \"nice\"])"
                 "(= (__  \"Clojure is a fun language!\")\n   [\"a\" \"Clojure\" \"fun\" \"is\" \"language\"])"
                 "(= (__  \"Fools fall for foolish follies.\")\n   [\"fall\" \"follies\" \"foolish\" \"Fools\" \"for\"])"]
-  :description "Write a function which splits a sentence up into a sorted list of words.
-Capitalization should not affect sort order and punctuation should be ignored."
+  :description "Write a function which splits a sentence up
+into a sorted list of words.
+Capitalization should not affect sort order
+and punctuation should be ignored."
   :tags        ["medium" "sorting"]}
 
  {:_id         71
@@ -678,9 +710,12 @@ Using ->> can sometimes make your code more readable."
                 "(= :x (__ [[:x :e :e]\n           [:o :x :e]\n           [:o :e :x]]))"
                 "(= :o (__ [[:x :e :o]\n           [:x :o :e]\n           [:o :e :x]]))"
                 "(= nil (__ [[:x :o :x]\n            [:x :o :x]\n            [:o :x :o]]))"]
-  :description "A tic-tac-toe board is represented by a two dimensional vector.
-X is represented by :x, O is represented by :o, and empty is represented by :e.
-A player wins by placing three Xs or three Os in a horizontal, vertical, or diagonal row.
+  :description "A tic-tac-toe board is represented by
+a two dimensional vector.
+X is represented by :x, O is represented by :o,
+and empty is represented by :e.
+A player wins by placing three Xs or three Os
+in a horizontal, vertical, or diagonal row.
 Write a function which analyzes a tic-tac-toe board
 and returns :x if X has won, :o if O has won,
 and nil if neither player has won."
@@ -711,7 +746,8 @@ Write a function which calculates Euler's totient function."
  {:_id         76
   :title       "Intro to Trampoline"
   :tests       ["(= __\n   (letfn\n     [(foo [x y] #(bar (conj x y) y))\n      (bar [x y] (if (> (last x) 10)\n                   x\n                   #(foo x (+ 2 y))))]\n     (trampoline foo [] 1)))"]
-  :description "The trampoline function takes a function f and a variable number of parameters.
+  :description "The trampoline function takes a function f
+and a variable number of parameters.
 Trampoline calls f with any parameters that were supplied.
 If f returns a function, trampoline
 calls that function with no arguments.
@@ -725,11 +761,13 @@ in a way that won't consume the stack."
   :title       "Anagram Finder"
   :tests       ["(= (__ [\"meat\" \"mat\" \"team\" \"mate\" \"eat\"])\n   #{#{\"meat\" \"team\" \"mate\"}})"
                 "(= (__ [\"veer\" \"lake\" \"item\" \"kale\" \"mite\" \"ever\"])\n   #{#{\"veer\" \"ever\"} #{\"lake\" \"kale\"} #{\"mite\" \"item\"}})"]
-  :description "Write a function which finds all the anagrams in a vector of words.
+  :description "Write a function which
+finds all the anagrams in a vector of words.
 A word x is an anagram of word y if all the letters in x
 can be rearranged in a different order to form y.
 Your function should return a set of sets,
-where each sub-set is a group of words which are anagrams of each other.
+where each sub-set is a group of words
+which are anagrams of each other.
 Each sub-set should have at least two words.
 Words without any anagrams should not be included in the result."
   :tags        ["medium"]}
@@ -746,7 +784,8 @@ Words without any anagrams should not be included in the result."
   :title       "Triangle Minimal Path"
   :tests       ["(= (__ [   [1]\n          [2 4]\n         [5 1 4]\n        [2 3 4 5]])\n   (+ 1 2 1 3)\n   7)"
                 "(= (__ [     [3]\n            [2 4]\n           [1 9 3]\n          [9 9 2 4]\n         [4 6 6 7 8]\n        [5 7 3 5 1 4]])\n   (+ 3 4 3 2 7 1)\n   20)"]
-  :description "Write a function which calculates the sum of the minimal path through a triangle.
+  :description "Write a function which calculates
+the sum of the minimal path through a triangle.
 The triangle is represented as a vector of vectors.
 The path should start at the top of the triangle
 and move to an adjacent number on the next row
@@ -773,8 +812,10 @@ and false otherwise."
   :tests       ["(= (__ #{0 1 2 3} #{2 3 4 5}) #{2 3})"
                 "(= (__ #{0 1 2} #{3 4 5}) #{})"
                 "(= (__ #{:a :b :c :d} #{:c :e :a :f :d}) #{:a :c :d})"]
-  :description "Write a function which returns the intersection of two sets.
-The intersection is the sub-set of items that each set has in common."
+  :description "Write a function which returns
+the intersection of two sets.
+The intersection is the sub-set of items
+that each set has in common."
   :tags        ["easy" "set-theory"]}
  
  {:_id         82
@@ -785,7 +826,8 @@ The intersection is the sub-set of items that each set has in common."
                 "(= true (__ #{\"spout\" \"do\" \"pot\" \"pout\" \"spot\" \"dot\"}))"
                 "(= true (__ #{\"share\" \"hares\" \"shares\" \"hare\" \"are\"}))"
                 "(= false (__ #{\"share\" \"hares\" \"hare\" \"are\"}))"]
-  :description "A word chain consists of a set of words ordered so that each word differs
+  :description "A word chain consists of
+a set of words ordered so that each word differs
 by only one letter from the words directly before and after it.
 The one letter difference can be either an insertion,
 a deletion, or a substitution.
@@ -808,8 +850,10 @@ and false if they cannot."
                 "(= true (__ false true false))"
                 "(= false (__ true true true))"
                 "(= true (__ true true true false))"]
-  :description "Write a function which takes a variable number of booleans.
-Your function should return true if some of the parameters are true,
+  :description "Write a function which takes
+a variable number of booleans.
+Your function should return true if
+some of the parameters are true,
 but not all of the parameters are true.
 Otherwise your function should return false."
   :tags        ["easy"]}
@@ -835,20 +879,26 @@ including the empty set and x itself.", :tags ["hard" "set-theory"]}
   :tests ["(= (__ 7) true)" 
 "(= (__ 986543210) true)" 
 "(= (__ 2) false)" "(= (__ 3) false)"], 
-  :description "Happy numbers are positive integers that follow a particular formula:
-take each individual digit, square it, and then sum the squares to get a new number.
-Repeat with the new number and eventually, you might get to a number whose squared sum is 1.
-This is a happy number. An unhappy number (or sad number) is one that loops endlessly.
+  :description "Happy numbers are positive integers that
+follow a particular formula:
+take each individual digit, square it,
+and then sum the squares to get a new number.
+Repeat with the new number and eventually,
+you might get to a number whose squared sum is 1.
+This is a happy number.
+An unhappy number (or sad number) is one that loops endlessly.
 Write a function that determines if a number is happy or not.", :tags 
 ["easy" "math"]}
 
  {:_id 87 :title "Create an Equation" 
   :tests ["(= (__ 3 4 7) '(= (+ 3 4) 7))" "(= (__ 3 4 12) '(= (* 3 4) 12))" "(= (__ 3 4 14) nil)" "(= (__ 3 4 5 35) '(= (* (+ 3 4) 5) 35))" "(= (__ 3 4 5 60) '(= (+ (* 3 4) 5) 60))" "(= (__ 3 4 5 23) '(= (+ 3 (* 4 5)) 23))" "(= (__ 3 4 5 27) '(= (* 3 (+ 4 5)) 27))" "(= (__ 3 4 5 6) nil)" "(= (__ 1 2 10 100 2001) '(= (+ 1 (* 2 10 100)) 2001)" "(= (__ 1 2 10 100 1300) '(= (* (+ 1 2 10) 100) 1300)"], 
   :description "Write a function which takes three or more integers.
-Using these integers, your function should generate clojure code representing an equation.
+Using these integers, your function should
+generate clojure code representing an equation.
 The following rules for the equation must be satisfied:\n
 1. All integers must be used once and only once.\n
-2. The order of the integers must be maintained when reading the equation left-to-right.\n
+2. The order of the integers must be
+   maintained when reading the equation left-to-right.\n
 3. The only functions you may use are +, *, or =.\n
 4. The equation must use the minimum number of parentheses.\n
 5. If no satisfying equation exists, return nil.", :tags ["hard" "code-generation"]}
@@ -858,7 +908,10 @@ The following rules for the equation must be satisfied:\n
           "(= (__ #{:a :b :c} #{}) #{:a :b :c})"
           "(= (__ #{} #{4 5 6}) #{4 5 6})"
           "(= (__ #{[1 2] [2 3]} #{[2 3] [3 4]}) #{[1 2] [3 4]})"]
-  :description "Write a function which returns the symmetric difference of two sets. The symmetric difference is the set of items belonging to one but not both of the two sets."}
+  :description "Write a function which returns
+the symmetric difference of two sets.
+The symmetric difference is the set of items
+belonging to one but not both of the two sets."}
 
  {:_id 89 :title "Graph Tour"
   :tests ["(= true (__ [[:a :b]]))"
@@ -870,9 +923,12 @@ The following rules for the equation must be satisfied:\n
               [:b :e] [:a :d] [:b :d] [:c :e]
               [:d :e] [:c :f] [:d :f]]))"
           "(= false (__ [[1 2] [2 3] [2 4] [2 5]]))"]
-  :description "Starting with a graph you must write a function that returns true if it is possible to make a tour of the graph in which every edge is visited exactly once.
+  :description "Starting with a graph you must write a function
+that returns true if it is possible to make
+a tour of the graph in which every edge is visited exactly once.
 
-The graph is represented by a vector of tuples, where each tuple represents a single edge.
+The graph is represented by a vector of tuples,
+where each tuple represents a single edge.
 
 The rules are:
 
@@ -889,7 +945,8 @@ The rules are:
    #{[1 4] [2 4] [3 4] [1 5] [2 5] [3 5]})"
           "(= 300 (count (__ (into #{} (range 10))
                   (into #{} (range 30)))))"]
-  :description "Write a function which calculates the Cartesian product of two sets."}
+  :description "Write a function which calculates
+the Cartesian product of two sets."}
 
  {:_id 91 :title "Graph Connectivity"
   :tests ["(= true (__ #{[:a :a]}))"
@@ -902,11 +959,16 @@ The rules are:
                [:x :y] [:d :a] [:b :e]}))"
           "(= true (__ #{[:a :b] [:b :c] [:c :d]
               [:x :y] [:d :a] [:b :e] [:x :a]}))"]
-  :description "Given a graph, determine whether the graph is connected. A connected graph is such that a path exists between any two given nodes.
+  :description "Given a graph, determine whether the graph is connected.
+A connected graph is such that
+a path exists between any two given nodes.
 
--Your function must return true if the graph is connected and false otherwise.
+-Your function must return true if
+ the graph is connected and false otherwise.
 
--You will be given a set of tuples representing the edges of a graph. Each member of a tuple being a vertex/node in the graph.
+-You will be given a set of tuples
+ representing the edges of a graph.
+ Each member of a tuple being a vertex/node in the graph.
 
 -Each edge is undirected (can be traversed either direction)."}
 
@@ -917,7 +979,8 @@ The rules are:
           "(= 48 (__ \"XLVIII\"))"]
   :description "Roman numerals are easy to recognize,
 but not everyone knows all the rules necessary to work with them.
-Write a function to parse a Roman-numeral string and return the number it represents. 
+Write a function to parse a Roman-numeral string
+and return the number it represents. 
 
 You can assume that the input will be well-formed,
 in upper-case, and follow the subtractive principle.
@@ -931,9 +994,12 @@ the largest number representable with ordinary letters."}
    [[:a :b] [:c :d] [:e :f]])"
           "(= (__ '((1 2)((3 4)((((5 6)))))))
    '((1 2)(3 4)(5 6)))"]
-  :description "Write a function which flattens any nested combination of sequential things (lists, vectors, etc.),
+  :description "Write a function which
+flattens any nested combination of sequential things
+(lists, vectors, etc.),
 but maintains the lowest level sequential items.
-The result should be a sequence of sequences with only one level of nesting."}
+The result should be a sequence of sequences
+with only one level of nesting."}
 
  {:_id 94 :title "Game of Life"
   :tests ["(= (__ [\"      \"  
@@ -970,17 +1036,25 @@ The result should be a sequence of sequences with only one level of nesting."}
     \" #  # \"
     \"  #   \"
     \"      \"])"]
-  :description "The game of life is a cellular automaton devised by mathematician John Conway. 
+  :description "The game of life is a cellular automaton
+devised by mathematician John Conway. 
 
 The 'board' consists of both live (#) and dead ( ) cells.
-Each cell interacts with its eight neighbours (horizontal, vertical, diagonal), and its next state is dependent on the following rules:
+Each cell interacts with its eight neighbours
+(horizontal, vertical, diagonal),
+and its next state is dependent on the following rules:
 
-1) Any live cell with fewer than two live neighbours dies, as if caused by under-population.
-2) Any live cell with two or three live neighbours lives on to the next generation.
-3) Any live cell with more than three live neighbours dies, as if by overcrowding.
-4) Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
+1) Any live cell with fewer than two live neighbours dies,
+   as if caused by under-population.
+2) Any live cell with two or three live neighbours
+   lives on to the next generation.
+3) Any live cell with more than three live neighbours dies,
+   as if by overcrowding.
+4) Any dead cell with exactly three live neighbours
+   becomes a live cell, as if by reproduction.
 
-Write a function that accepts a board, and returns a board representing the next generation of cells."}
+Write a function that accepts a board,
+and returns a board representing the next generation of cells."}
 
  {:_id 95 :title "To Tree, or not to Tree"
   :tests ["(= (__ '(:a (:b nil nil) nil))
@@ -997,8 +1071,10 @@ Write a function that accepts a board, and returns a board representing the next
    false)"
           "(= (__ '(:a nil ()))
    false)"]
-  :description "Write a predicate which checks whether or not a given sequence represents a binary tree.
-Each node in the tree must have a value, a left child, and a right child."}
+  :description "Write a predicate which checks whether or not
+a given sequence represents a binary tree.
+Each node in the tree must have a value,
+a left child, and a right child."}
 
  {:_id 96 :title "Beauty is Symmetry"
   :tests ["(= (__ '(:a (:b nil nil) (:b nil nil))) true)"
@@ -1013,9 +1089,13 @@ Each node in the tree must have a value, a left child, and a right child."}
           "(= (__ [1 [2 nil [3 [4 [5 nil nil] [6 nil nil]] nil]]
           [2 [3 nil [4 [6 nil nil] nil]] nil]])
    false)"]
-  :description "Let us define a binary tree as \"symmetric\" if the left half of the tree is the mirror image of the right half of the tree.
-Write a predicate to determine whether or not a given binary tree is symmetric.
-(see To Tree, or not to Tree for a reminder on the tree representation we're using)."}
+  :description "Let us define a binary tree as \"symmetric\"
+if the left half of the tree is
+the mirror image of the right half of the tree.
+Write a predicate to determine whether or not
+a given binary tree is symmetric.
+(see To Tree, or not to Tree for a reminder on
+the tree representation we're using)."}
 
  {:_id 97 :title "Pascal's Triangle"
   :tests ["(= (__ 1) [1])"
@@ -1029,13 +1109,16 @@ Write a predicate to determine whether or not a given binary tree is symmetric.
    [1 10 45 120 210 252 210 120 45 10 1])"
           "(= (__ 11)
    [1 10 45 120 210 252 210 120 45 10 1])"]
-  :description "Pascal's triangle is a triangle of numbers computed using the following rules:
+  :description "Pascal's triangle is a triangle of numbers
+computed using the following rules:
 
 - The first row is 1.
-- Each successive row is computed by adding together adjacent numbers in the row above,
+- Each successive row is computed by
+  adding together adjacent numbers in the row above,
 and adding a 1 to the beginning and end of the row.
 
-Write a function which returns the nth row of Pascal's Triangle."}
+Write a function which returns
+:the nth row of Pascal's Triangle."}
 
  {:_id 98 :title "Equivalence Classes"
   :tests ["(= (__ #(* % %) #{-2 -1 0 1 2})
@@ -1046,15 +1129,19 @@ Write a function which returns the nth row of Pascal's Triangle."}
    #{#{0} #{1} #{2} #{3} #{4}})"
           "(= (__ (constantly true) #{0 1 2 3 4})
    #{#{0 1 2 3 4}})"]
-  :description "A function f defined on a domain D induces an equivalence relation on D, as follows:
-a is equivalent to b with respect to f if and only if (f a) is equal to (f b).
-Write a function with arguments f and D that computes the equivalence classes of D with respect to f."}
+  :description "A function f defined on a domain D
+induces an equivalence relation on D, as follows:
+a is equivalent to b with respect to f
+if and only if (f a) is equal to (f b).
+Write a function with arguments f and D
+that computes the equivalence classes of D with respect to f."}
 
  {:_id 99 :title "Product Digits"
   :tests ["(= (__ 1 1) [1])"
           "(= (__ 99 9) [8 9 1])"
           "(= (__ 999 99) [9 8 9 0 1])"]
-  :description "Write a function which multiplies two numbers and returns the result as a sequence of its digits."}
+  :description "Write a function which multiplies two numbers
+and returns the result as a sequence of its digits."}
 
  {:_id 100 :title "Least Common Multiple"
   :tests ["(== (__ 2 3) 6)"
@@ -1062,8 +1149,10 @@ Write a function with arguments f and D that computes the equivalence classes of
           "(== (__ 1/3 2/5) 2)"
           "(== (__ 3/4 1/6) 3/2)"
           "(== (__ 7 5/7 2 3/5) 210)"]
-  :description "Write a function which calculates the least common multiple.
-Your function should accept a variable number of positive integers or ratios."}
+  :description "Write a function which calculates
+the least common multiple.
+Your function should accept a variable number
+of positive integers or ratios."}
 
  {:_id 101 :title "Levenshtein Distance"
   :tests ["(= (__ \"kitten\" \"sitting\") 3)"
@@ -1075,22 +1164,29 @@ Your function should accept a variable number of positive integers or ratios."}
           "(= (__ '(:a :b :c :d) '(:a :d)) 2)"
           "(= (__ \"ttttattttctg\" \"tcaaccctaccat\") 10)"
           "(= (__ \"gaattctaatctc\" \"caaacaaaaaattt\") 9)"]
-  :description "Given two sequences x and y, calculate the Levenshtein distance of x and y,
-i. e. the minimum number of edits needed to transform x into y. The allowed edits are:
+  :description "Given two sequences x and y,
+calculate the Levenshtein distance of x and y,
+i. e. the minimum number of edits needed to transform x into y.
+The allowed edits are:
 
 - insert a single item
 - delete a single item
 - replace a single item with another item
 
-WARNING: Some of the test cases may timeout if you write an inefficient solution!"}
+WARNING: Some of the test cases may timeout
+if you write an inefficient solution!"}
 
  {:_id 102 :title "intoCamelCase"
   :tests ["(= (__ \"something\") \"something\")"
           "(= (__ \"multi-word-key\") \"multiWordKey\")"
           "(= (__ \"leaveMeAlone\") \"leaveMeAlone\")"]
-  :description "When working with java, you often need to create an object with fieldsLikeThis,
-but you'd rather work with a hashmap that has :keys-like-this until it's time to convert.
-Write a function which takes lower-case hyphen-separated strings and converts them to camel-case strings."}
+  :description "When working with java,
+you often need to create an object with fieldsLikeThis,
+but you'd rather work with a hashmap
+that has :keys-like-this until it's time to convert.
+Write a function which takes
+lower-case hyphen-separated strings
+and converts them to camel-case strings."}
  
  {:_id 103 :title "Generating k-combinations"
   :tests ["(= (__ 1 #{4 5 6}) #{#{4} #{5} #{6}})"
@@ -1101,9 +1197,12 @@ Write a function which takes lower-case hyphen-separated strings and converts th
          "(= (__ 4 #{[1 2 3] :a \"abc\" \"efg\"}) #{#{[1 2 3] :a \"abc\" \"efg\"}})"
          "(= (__ 2 #{[1 2 3] :a \"abc\" \"efg\"}) #{#{[1 2 3] :a} #{[1 2 3] \"abc\"} #{[1 2 3] \"efg\"}
                                                   #{:a \"abc\"} #{:a \"efg\"} #{\"abc\" \"efg\"}}))"]
-  :description "Given a sequence S consisting of n elements generate all k-combinations of S,
-i.e. generate all possible sets consisting of k distinct elements taken from S.
-The number of k-combinations for a sequence is equal to the binomial coefficient."}
+  :description "Given a sequence S consisting of n elements
+generate all k-combinations of S,
+i.e. generate all possible sets consisting
+of k distinct elements taken from S.
+The number of k-combinations for a sequence
+is equal to the binomial coefficient."}
  
  {:_id         104
   :title       "Write Roman Numerals"
@@ -1155,14 +1254,20 @@ you must return the length of the shortest path, not the path itself."
 
 {:_id         107
  :title       "Simple closures"
- :description "Lexical scope and first-class functions are two of the most
-basic building blocks of a functional language like Clojure.
-When you combine the two together, you get something very powerful called lexical closures.
-With these, you can exercise a great deal of control over the lifetime of your local bindings,
-saving their values for use later, long after the code you're running now has finished.
+ :description "Lexical scope and first-class functions
+are two of the most basic building blocks
+of a functional language like Clojure.
+When you combine the two together,
+you get something very powerful called lexical closures.
+With these, you can exercise a great deal
+of control over the lifetime of your local bindings,
+saving their values for use later,
+long after the code you're running now has finished.
 
-It can be hard to follow in the abstract, so let's build a simple closure.
-Given a positive integer n, return a function (f x) which computes xn.
+It can be hard to follow in the abstract,
+so let's build a simple closure.
+Given a positive integer n,
+return a function (f x) which computes xn.
 Observe that the effect of this is to preserve the value of n
 for use outside the scope in which it is defined.
 "
@@ -1172,8 +1277,10 @@ for use outside the scope in which it is defined.
 
 {:_id         108
  :title       "Lazy Searching"
- :description "Given any number of sequences, each sorted from smallest to largest,
-find the smallest single number which appears in all of the sequences.
+ :description "Given any number of sequences,
+each sorted from smallest to largest,
+find the smallest single number
+which appears in all of the sequences.
 The sequences may be infinite, so be careful to search lazily."
  :tests       ["(= 3 (__ [3 4 5]))"
                  "(= 4 (__ [1 2 3 4 5 6 7] [0.5 3/2 4 19]))"
@@ -1184,10 +1291,15 @@ The sequences may be infinite, so be careful to search lazily."
 
 {:_id         110
  :title       "Sequence of pronunciations"
- :description "Write a function that returns a lazy sequence of \"pronunciations\" of a sequence of numbers.
-A pronunciation of each element in the sequence consists of the number of repeating identical numbers and the number itself.
-For example, [1 1] is pronounced as [2 1] (\"two ones\"), which in turn is pronounced as [1 2 1 1] (\"one two, one one\") .
-Your function should accept an initial sequence of numbers, and return an infinite lazy sequence of pronunciations,
+ :description "Write a function that returns
+a lazy sequence of \"pronunciations\" of a sequence of numbers.
+A pronunciation of each element in the sequence
+consists of the number of repeating identical numbers
+and the number itself.
+For example, [1 1] is pronounced as [2 1] (\"two ones\"),
+which in turn is pronounced as [1 2 1 1] (\"one two, one one\") .
+Your function should accept an initial sequence of numbers,
+and return an infinite lazy sequence of pronunciations,
 each element being a pronunciation of the previous element."
  :tests       ["(= [[1 1] [2 1] [1 2 1 1]] (take 3 (__ [1])))"
                "(= [3 1 2 4] (first (__[1 1 1 4 4])))"
@@ -1196,10 +1308,13 @@ each element being a pronunciation of the previous element."
 
 {:_id         111
  :title       "Crossword puzzle"
- :description "Write a function that takes a string and a partially-filled crossword puzzle board,
-and determines if the input string can be legally placed onto the board.
+ :description "Write a function that takes a string
+and a partially-filled crossword puzzle board,
+and determines if the input string
+can be legally placed onto the board.
 
-The crossword puzzle board consists of a collection of partially-filled rows.
+The crossword puzzle board consists of
+a collection of partially-filled rows.
 Empty spaces are denoted with an underscore (_),
 unusable spaces are denoted with a hash symbol (#),
 and pre-filled spaces have a character in place;
@@ -1211,7 +1326,8 @@ It may use empty spaces (underscores)
 It may use but must not conflict with any pre-filled characters.
 It must not use any unusable spaces (hashes).
 There must be no empty spaces (underscores) or extra characters
-before or after the word (the word may be bound by unusable spaces though).
+before or after the word (the word may be
+bound by unusable spaces though).
 Characters are not case-sensitive.
 Words may be placed vertically (proceeding top-down only),
 or horizontally (proceeding left-right only)."
@@ -1225,9 +1341,12 @@ or horizontally (proceeding left-right only)."
 
 {:_id         112
   :title       "Sequs Horribilis"
-  :description "Create a function which takes an integer and a nested collection of integers as arguments.
-Analyze the elements of the input collection and return a sequence which maintains the nested structure,
-and which includes all elements starting from the head whose sum is less than or equal to the input integer."
+  :description "Create a function which takes
+an integer and a nested collection of integers as arguments.
+Analyze the elements of the input collection
+and return a sequence which maintains the nested structure,
+and which includes all elements starting from
+the head whose sum is less than or equal to the input integer."
   :tests       ["(=  (__ 10 [1 2 [3 [4 5] 6] 7])    '(1 2 (3 (4))))"
                 "(=  (__ 30 [1 2 [3 [4 [5 [6 [7 8]] 9]] 10] 11])    '(1 2 (3 (4 (5 (6 (7)))))))"
                 "(=  (__ 9 (range))    '(0 1 2 3))"
@@ -1239,11 +1358,14 @@ and which includes all elements starting from the head whose sum is less than or
 
  {:_id         11
   :title       "Global take-while"
-  :description "take-while is great for filtering sequences, but it limited:
+  :description "take-while is great for
+filtering sequences, but it limited:
 you can only examine a single item of the sequence at a time.
-What if you need to keep track of some state as you go over the sequence?
+What if you need to keep track of
+some state as you go over the sequence?
                 
-Write a function which accepts an integer n, a predicate p, and a sequence.
+Write a function which accepts an integer n,
+a predicate p, and a sequence.
 It should return a lazy sequence of items in the list up to,
 but not including, the nth item that satisfies the predicate."
   :tests       ["(= [2 3 5 7 11 13]
@@ -1285,18 +1407,25 @@ and returns true iff it is a balanced prime."
 
 {:_id         117
  :title       "For Science!"
- :description "A mad scientist with tenure has created an experiment tracking mice in a maze.
+ :description "A mad scientist with tenure has created
+an experiment tracking mice in a maze.
 Several mazes have been randomly generated,
 and you’ve been tasked with writing a program to determine
-the mazes in which it’s possible for the mouse to reach the cheesy endpoint.
-Write a function which accepts a maze in the form of a collection of rows,
+the mazes in which it’s possible for the mouse
+to reach the cheesy endpoint.
+Write a function which accepts a maze
+in the form of a collection of rows,
 each row is a string where:
 
 * spaces represent areas where the mouse can walk freely
 * hashes (#) represent walls where the mouse can not walk
 * M represents the mouse’s starting point
 * C represents the cheese which the mouse must reach
-* The mouse is not allowed to travel diagonally in the maze (only up/down/left/right), nor can he escape the edge of the maze. Your function must return true iff the maze is solvable by the mouse."
+* The mouse is not allowed to travel diagonally
+in the maze (only up/down/left/right),
+nor can he escape the edge of the maze.
+Your function must return true
+iff the maze is solvable by the mouse."
  :tests       ["(= true  (__ [\"M   C\"]))"
                "(= false (__ [\"M # C\"]))"
                "(= true  (__ [\"#######\"
@@ -1334,7 +1463,8 @@ each row is a string where:
                                 \"# # # #M\"]))"]}
 {:_id         118
   :title       "Re-implement Map"
-  :description "Map is one of the core elements of a functional programming language.
+  :description "Map is one of the core elements
+of a functional programming language.
 Given a function f and an input sequence s,
 return a lazy sequence of (f x) for each element x in s."
   :tests       ["(= [3 4 5 6 7]
@@ -1352,8 +1482,10 @@ return a lazy sequence of (f x) for each element x in s."
 
 {:_id         119
  :title       "Win at Tic-Tac-Toe"
- :description "As in Problem 73, a tic-tac-toe board is represented by a two dimensional vector.
-X is represented by :x, O is represented by :o, and empty is represented by :e.
+ :description "As in Problem 73, a tic-tac-toe board
+is represented by a two dimensional vector.
+X is represented by :x, O is represented by :o,
+and empty is represented by :e.
 Create a function that accepts a game piece and board as arguments,
 and returns a set (possibly empty) of all valid board placements
 of the game piece which would result in an immediate win.
@@ -1383,7 +1515,8 @@ For example, [0 1] is the topmost row, center position."
 
 {:_id         120
  :title       "Sum of square of digits"
- :description "Write a function which takes a collection of integers as an argument.
+ :description "Write a function which takes
+a collection of integers as an argument.
 Return the count of how many elements are smaller than
 the sum of their squared component digits.
 For example: 10 is larger than 1 squared plus 0 squared;
@@ -1424,7 +1557,8 @@ containing the map of variable names to their values."
 
 {:_id         122
  :title       "Read a binary number"
- :description "Convert a binary number, provided in the form of a string,
+ :description "Convert a binary number,
+provided in the form of a string,
 to its numerical value."
  :tests       ["(= 0     (__ \"0\"))"
                "(= 7     (__ \"111\"))"
@@ -1437,15 +1571,20 @@ to its numerical value."
 {:_id         124
  :title       "Analyze Reversi"
  :description "Reversi is normally played on an 8 by 8 board.
-In this problem, a 4 by 4 board is represented as a two-dimensional vector
-with black, white, and empty pieces represented by ‘b, ‘w, and ‘e, respectively.
-Create a function that accepts a game board and color as arguments,
+In this problem, a 4 by 4 board is represented
+as a two-dimensional vector
+with black, white, and empty pieces represented
+by ‘b, ‘w, and ‘e, respectively.
+Create a function that accepts
+a game board and color as arguments,
 and returns a map of legal moves for that color.
 Each key should be the coordinates of a legal move,
-and its value a set of the coordinates of the pieces flipped by that move.
+and its value a set of the coordinates
+of the pieces flipped by that move.
 
 Board coordinates should be as in calls to get-in.
-For example, [0 1] is the topmost row, second column from the left."
+For example, [0 1] is the topmost row,
+second column from the left."
  :tests       ["(= {[1 3] #{[1 2]}
                        [0 2] #{[1 2]}
                        [3 1] #{[2 1]}
@@ -1486,8 +1625,9 @@ For example, [0 1] is the topmost row, second column from the left."
 
 {:_id         125
  :title       "Gus' Quinundrum"
- :description "Create a function of no arguments which returns a string
-that is an exact copy of the function itself.
+ :description "Create a function of no arguments
+which returns a string that is
+an exact copy of the function itself.
 
 Hint: Read up on quines if you get stuck
 (this question is harder than it first appears);
@@ -1501,14 +1641,18 @@ Fun fact: Gus is the name of the 4Clojure dragon."
 
 {:_id         127
  :title       "Love Triangle"
- :description "Everyone loves triangles, and it’s easy to understand why —
-they’re so wonderfully symmetric (except scalenes, they suck).
+ :description "Everyone loves triangles,
+and it’s easy to understand why —
+they’re so wonderfully symmetric
+(except scalenes, they suck).
 
 Your passion for triangles has led you to become a miner
 (and part-time Clojure programmer) where you work all day
-to chip out isosceles-shaped minerals from rocks gathered in a nearby open-pit mine.
+to chip out isosceles-shaped minerals from rocks
+gathered in a nearby open-pit mine.
 There are too many rocks coming from the mine to harvest them all
-so you’ve been tasked with writing a program to analyze the mineral patterns of each rock,
+so you’ve been tasked with writing a program
+to analyze the mineral patterns of each rock,
 and determine which rocks have the biggest minerals.
 
 Someone has already written a computer-vision system for the mine.
@@ -1516,17 +1660,29 @@ It images each rock as it comes into the processing centre
 and creates a cross-sectional bitmap of mineral (1)
 and rock (0) concentrations for each one.
 
-You must now create a function which accepts a collection of integers,
-each integer when read in base-2 gives the bit-representation of the rock (again, 1s are mineral and 0s are worthless scalene-like rock). You must return the cross-sectional area of the largest harvestable mineral from the input rock, as follows:
+You must now create a function which
+accepts a collection of integers,
+each integer when read in base-2
+gives the bit-representation of the rock
+(again, 1s are mineral and 0s are worthless scalene-like rock).
+You must return the cross-sectional area of
+the largest harvestable mineral from the input rock, as follows:
 
-The minerals only have smooth faces when sheared vertically or horizontally from the rock’s cross-section
-The mine is only concerned with harvesting isosceles triangles (such that one or two sides can be sheared)
-If only one face of the mineral is sheared, its opposing vertex must be a point (ie. the smooth face must be of odd length), and its two equal-length sides must intersect the shear face at 45° (ie. those sides must cut even-diagonally)
+The minerals only have smooth faces when
+sheared vertically or horizontally from the rock’s cross-section
+The mine is only concerned with harvesting
+isosceles triangles (such that one or two sides can be sheared)
+If only one face of the mineral is sheared,
+its opposing vertex must be a point
+(ie. the smooth face must be of odd length),
+and its two equal-length sides must intersect
+the shear face at 45° (ie. those sides must cut even-diagonally)
 The harvested mineral may not contain any traces of rock
 The mineral may lie in any orientation in the plane
 Area should be calculated as the sum of 1s that comprise the mineral
 Minerals must have a minimum of three measures of area to be harvested
-If no minerals can be harvested from the rock, your function should return nil"
+If no minerals can be harvested from the rock,
+your function should return nil"
  :tests       ["(= 10 (__ [15 15 15 15 15]))"
                ; 1111      1111
                ; 1111      *111
@@ -1577,7 +1733,8 @@ If no minerals can be harvested from the rock, your function should return nil"
 of a non-negative number (first argument)
 in numerical system with an arbitrary base (second argument).
 Digits should be represented with their integer values,
-e.g. 15 would be [1 5] in base 10, [1 1 1 1] in base 2 and [15] in base 16."
+e.g. 15 would be [1 5] in base 10,
+[1 1 1 1] in base 2 and [15] in base 16."
   :tests       ["(= [1 2 3 4 5 0 1] (__ 1234501 10))"
                 "(= [0] (__ 0 11))"
                 "(= [1 0 0 1] (__ 9 2))"
@@ -1699,6 +1856,7 @@ are contained in the input sequence."
     (println (str "\n#" n ": " (:title (nth problems (dec n)))))
     (println (str "\n" (:description (nth problems (dec n))) "\n"))
     (run! println (:tests (nth problems (dec n))))
+    (println "")
     (spit (str "answers/" n) (read-line)))
 
 (defn reject []
