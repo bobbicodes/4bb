@@ -8,3 +8,7 @@ Run 4clojure problems with babashka right from your shell. Even do it over ssh!
 2. Clone this repo and type `bb -f forebb.clj` while in the project directory.
 
 Your answers and progress are stored in the `answers` directory.
+
+## TODO
+
+- [ ] Reject answers containing "restricted" functions
