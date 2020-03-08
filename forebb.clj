@@ -1,3 +1,7 @@
+(ns forebb
+  (:require [clojure.java.shell :as shell]
+   [clojure.string :as str]))
+
 (def problems
   [{:_id         1
     :title       "Nothing but the Truth"
@@ -1689,6 +1693,8 @@ are contained in the input sequence."
                "(= (__ [19 4 17 1 3 10 2 13 13 2 16 4 2 15 13 9 6 14 2 11])
                       [[1 4] [6 6] [9 11] [13 17] [19 19]])"]}])
 
+(declare -main)
+
 (defn prompt [n]
     (println (str "\n#" n ": " (:title (nth problems (dec n)))))
     (println (str "\n" (:description (nth problems (dec n))) "\n"))
@@ -1698,14 +1704,14 @@ are contained in the input sequence."
 (defn reject []
   (println "\nSorry, try again...")
   (Thread/sleep 1500)
-  (shell/sh "bb" "-f" "bb.clj"))
+  (-main))
 
 (defn next-prob! []
   (println "\nNICE! Here's the next one:")
   (Thread/sleep 1500)
   (spit "answers/prob-num"
         (inc (read-string (slurp "answers/prob-num"))))
-  (shell/sh "bb" "-f" "bb.clj"))
+  (-main))
 
 (defn check [results]
   (if (every? true? results)
@@ -1715,7 +1721,6 @@ are contained in the input sequence."
 (defn safe-eval [ans]
   (try (eval (read-string ans))
     (catch Exception e
-      (println (.getMessage e))
       false)))
 
 (defn submit [ans n]
@@ -1724,6 +1729,9 @@ are contained in the input sequence."
     (if (= ans "") (reject)
         (check (map safe-eval replaced)))))
 
-(let [n (read-string (slurp "answers/prob-num"))]
-  (prompt n)
-  (submit (slurp (str "answers/" n)) n))
+(defn -main []
+  (let [n (read-string (slurp "answers/prob-num"))]
+    (prompt n)
+    (submit (slurp (str "answers/" n)) n)))
+
+(-main)
