@@ -61,7 +61,8 @@
         problem  (problems (dec n))
         tests    (:tests problem)
         replaced (mapv #(str/replace % "__" ans) tests)]
-    (every? true? (map safe-eval replaced))))
+    (if (= "" ans) false
+        (every? true? (map safe-eval replaced)))))
 
 (defn submit [ans n]
   (let [tests (:tests (problems (dec n)))
