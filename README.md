@@ -1,10 +1,10 @@
-# ctrain
+# 4bb
 
-Learn Clojure right from the command-line, from within a running Clojure program. Even do it over ssh!
+Run 4clojure problems with babashka right from your shell. Even do it over ssh!
 
 ## Usage
 
-1. Install [Clojure](https://clojure.org/guides/getting_started) if needed.
-2. Clone this repo and type `clj -m ctrain.core` while in the ctrain directory.
+1. Install [babashka](https://github.com/borkdude/babashka/) (v0.0.75 or later required)
+2. Clone this repo and type `bb -f 4bb` while in the project directory.
 
-When you get a problem right it saves your progress and stores your answers on disk.
+Your answers and progress are stored in the `answers` directory.
