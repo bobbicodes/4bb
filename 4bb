@@ -1852,6 +1852,18 @@ are contained in the input sequence."
 
 (declare -main)
 
+(def ansi-styles
+  {:red   "[31m"
+   :green "[32m"
+   :reset "[0m"})
+
+(defn ansi [style]
+  (str \u001b (style ansi-styles)))
+
+(defn colorize
+  [text color]
+  (str (ansi color) text (ansi :reset)))
+
 (defn prompt [n]
     (println (str "\n#" n ": " (:title (nth problems (dec n)))))
     (println (str "\n" (:description (nth problems (dec n))) "\n"))
@@ -1860,12 +1872,12 @@ are contained in the input sequence."
     (spit (str "answers/" n) (read-line)))
 
 (defn reject []
-  (println "\nSorry, try again...")
+  (println (colorize "\nSorry, try again..." :red))
   (Thread/sleep 1500)
   (-main))
 
 (defn next-prob! []
-  (println "\nNICE! Here's the next one:")
+  (println (colorize "\nNICE! Here's the next one:" :green))
   (Thread/sleep 1500)
   (spit "answers/prob-num"
         (inc (read-string (slurp "answers/prob-num"))))
