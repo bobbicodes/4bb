@@ -1,9 +1,16 @@
 (ns forebb
-  (:require [clojure.set]
+  (:require [clojure.java.io :as io]
+            [clojure.set]
             [clojure.string :as str]))
 
 (declare -main problems)
 (load-file "problems.clj")
+
+(defn most-recent-answer []
+  (->> (io/file "answers")
+       (.listFiles)
+       (sort-by #(.lastModified %))
+       last))
 
 (def ansi-styles
   {:red   "[31m"
@@ -35,8 +42,6 @@
   (println (colorize "\nNICE! Here's the next one:" :green))
   (println (char 7))
   (Thread/sleep 1500)
-  (spit "answers/prob-num"
-        (inc (read-string (slurp "answers/prob-num"))))
   (-main))
 
 (defn check [results]
@@ -49,6 +54,15 @@
        (catch Exception _
          false)))
 
+(defn test-ans [answer]
+  (let [name     (.getName answer)
+        n        (Integer/parseInt name)
+        ans      (slurp answer)
+        problem  (problems (dec n))
+        tests    (:tests problem)
+        replaced (mapv #(str/replace % "__" ans) tests)]
+    (every? true? (map safe-eval replaced))))
+
 (defn submit [ans n]
   (let [tests (:tests (problems (dec n)))
         replaced (map #(str/replace % "__" ans) tests)]
@@ -56,7 +70,10 @@
         (check (map safe-eval replaced)))))
 
 (defn -main []
-  (let [n (read-string (slurp "answers/prob-num"))]
+  (let [ans (most-recent-answer)
+        correct? (test-ans ans)
+        ans-n (Integer/parseInt (.getName ans))
+        n (if correct? (inc ans-n) ans-n)]
     (prompt n)
     (submit (slurp (str "answers/" n)) n)))
 
