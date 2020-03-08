@@ -1,5 +1,3 @@
-(ns forebb.problems)
-
 (def problems
   [{:_id         1
     :title       "Nothing but the Truth"
