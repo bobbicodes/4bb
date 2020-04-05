@@ -12,7 +12,7 @@ it will evaluate to true."}
 
    {:_id         3
     :title       "Strings"
-    :tests       ["(= __ (.toUpperCase \"eat me\"))"]
+    :tests       ["(= __ (.toUpperCase \"hello world\"))"]
     :description "Clojure strings are Java strings,
 so you can use Java string methods on them."}
 
@@ -99,10 +99,10 @@ of a sequence except the first."}
     :description "Write a function which doubles a number."}
 
    {:_id         16
-    :title       "What Up"
-    :tests       ["(= (__ \"Dave\") \"What up, Dave!\")"
-                  "(= (__ \"Jenn\") \"What up, Jenn!\")"
-                  "(= (__ \"Rhea\") \"What up, Rhea!\")"]
+    :title       "Hello World"
+    :tests       ["(= (__ \"Dave\") \"Hello, Dave!\")"
+                  "(= (__ \"Jenn\") \"Hello, Jenn!\")"
+                  "(= (__ \"Rhea\") \"Hello, Rhea!\")"]
     :description "Write a function which returns a personalized greeting."}
 
    {:_id         17
@@ -529,16 +529,6 @@ containing the result of applying each function
 left-to-right to the argument list."
     :tags        ["medium" "higher-order-functions" "core-functions"]}
 
-   {:_id         66
-    :title       "Greatest Common Divisor"
-    :tests       ["(= (__ 2 4) 2)"
-                  "(= (__ 10 5) 5)"
-                  "(= (__ 5 7) 1)"
-                  "(= (__ 1023 858) 33)"]
-    :description "Given two integers, write a function which
-returns the greatest common divisor."
-    :tags        ["easy"]}
-
    {:_id         60
     :restricted  ["reductions"]
     :title       "Sequence Reductions"
@@ -623,6 +613,16 @@ the point is to poke at them and understand their behavior."
                   "(= :set (__ #{10 (rand-int 5)}))"
                   "(= [:map :set :vector :list] (map __ [{} #{} [] ()]))"]
     :restricted  ["class" "type" "Class" "vector?" "sequential?" "list?" "seq?" "map?" "set?" "instance?" "getClass"]}
+
+    {:_id         66
+    :title       "Greatest Common Divisor"
+    :tests       ["(= (__ 2 4) 2)"
+                  "(= (__ 10 5) 5)"
+                  "(= (__ 5 7) 1)"
+                  "(= (__ 1023 858) 33)"]
+    :description "Given two integers, write a function which
+returns the greatest common divisor."
+    :tags        ["easy"]}
 
    {:_id         67
     :title       "Prime Numbers"
