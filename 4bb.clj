@@ -58,7 +58,10 @@
   (let [name     (.getName answer)
         n        (Integer/parseInt name)
         ans      (slurp answer)
-        problem  (problems (dec n))
+        problem (some (fn [{id :_id :as p}]
+                        (when (= id n)
+                          p))
+                      problems)
         tests    (:tests problem)
         replaced (mapv #(str/replace % "__" ans) tests)]
     (if (= "" ans) false
