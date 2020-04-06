@@ -6,6 +6,17 @@
 (declare -main problems)
 (load-file "problems.clj")
 
+(defn get-problem [id]
+  (some (fn [{_id :_id :as p}]
+          (when (= _id id)
+            p))
+        problems))
+
+(defn get-next-problem-id [id]
+  (let [prob-ids (map :_id problems)
+        sc       (into (sorted-set) prob-ids)]
+    (first (subseq sc > id))))
+
 (defn most-recent-answer []
   (->> (io/file "answers")
        (.listFiles)
@@ -25,7 +36,7 @@
   (str (ansi color) text (ansi :reset)))
 
 (defn prompt [n]
-  (let [prob (nth problems (dec n))
+  (let [prob (get-problem n)
         id   (:_id prob)]
     (println (str "\n#" id ": " (:title prob)))
     (println (str "\n" (:description prob) "\n"))
@@ -58,10 +69,7 @@
   (let [name     (.getName answer)
         n        (Integer/parseInt name)
         ans      (slurp answer)
-        problem (some (fn [{id :_id :as p}]
-                        (when (= id n)
-                          p))
-                      problems)
+        problem  (get-problem n)
         tests    (:tests problem)
         replaced (mapv #(str/replace % "__" ans) tests)]
     (if (= "" ans) false
@@ -77,7 +85,7 @@
   (let [ans (most-recent-answer)
         correct? (test-ans ans)
         ans-n (Integer/parseInt (.getName ans))
-        n (if correct? (inc ans-n) ans-n)]
+        n (if correct? (get-next-problem-id ans-n) ans-n)]
     (prompt n)
     (submit (slurp (str "answers/" n)) n)))
 
