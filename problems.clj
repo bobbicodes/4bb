@@ -1843,6 +1843,28 @@ from the first function after it hits the end."
                   "(= (take 12 (__ 0 inc dec inc dec inc)) [0 1 0 1 0 1 2 1 2 1 2 3])"]
     :tags        ["medium" "sequences"]}
 
+   {:_id         158
+    :title       "Decurry"
+    :description "Write a function that accepts a curried function of unknown arity n.
+Return an equivalent function of n arguments. "
+    :tests       ["(= 10 ((__ (fn [a]
+                                (fn [b]
+                                  (fn [c]
+                                    (fn [d]
+                                      (+ a b c d))))))
+                          1 2 3 4))"
+                  "(= 24 ((__ (fn [a]
+                                (fn [b]
+                                  (fn [c]
+                                    (fn [d]
+                                      (* a b c d))))))
+                          1 2 3 4))"
+                  "(= 25 ((__ (fn [a]
+                                (fn [b]
+                                  (* a b))))
+                          5 5))"]
+    :tags        ["medium" "partial-functions"]}
+
    {:_id         171
     :title       "Intervals"
     :description "Write a function that takes a sequence of integers
