@@ -1915,4 +1915,24 @@ are contained in the input sequence."
                   "(= (__ [1 1 1 1 1 1 1]) [[1 1]])"
                   "(= (__ []) [])"
                   "(= (__ [19 4 17 1 3 10 2 13 13 2 16 4 2 15 13 9 6 14 2 11])
-                      [[1 4] [6 6] [9 11] [13 17] [19 19]])"]}])
+                      [[1 4] [6 6] [9 11] [13 17] [19 19]])"]}
+
+   {:_id         177
+    :title       "Balancing Brackets"
+    :description "When parsing a snippet of code it's often a good idea to do a
+sanity check to see if all the brackets match up. Write a function that takes in
+a string and returns truthy if all square [ ] round ( ) and curly { } brackets are
+properly paired and legally nested, or returns falsey otherwise."
+    :tests       ["(__ \"This string has no brackets.\")"
+                  "(__ \"class Test {
+                          public static void main(String[] args) {
+                            System.out.println(\\\"Hello world.\\\");
+                          }
+                        }\")"
+                  "(not (__ \"(start, end]\"))"
+                  "(not (__ \"())\"))"
+                  "(not (__ \"[ { ] } \"))"
+                  "(__ \"([]([(()){()}(()(()))(([[]]({}()))())]((((()()))))))\")"
+                  "(not (__ \"([]([(()){()}(()(()))(([[]]({}([)))())]((((()()))))))\"))"
+                  "(not (__ \"[\"))"]
+    :tags        ["medium" "parsing"]}])
