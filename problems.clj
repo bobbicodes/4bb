@@ -1352,7 +1352,7 @@ the head whose sum is less than or equal to the input integer."
                   "(=  (__ 1 [-10 [1 [2 3 [4 5 [6 7 [8]]]]]])
                         '(-10 (1 (2 3 (4)))))"]}
 
-   {:_id         11
+   {:_id         114
     :title       "Global take-while"
     :description "take-while is great for
 filtering sequences, but it limited:
@@ -1723,6 +1723,24 @@ your function should return nil"
                                         ; 00000      00000
                   ]}
 
+   {:_id         132
+    :title       "Intervals"
+    :description "Write a function that takes a two-argument predicate,
+a value, and a collection; and returns a new collection where the value
+is inserted between every two items that satisfy the predicate."
+    :tests       ["(= '(1 :less 6 :less 7 4 3) (__ < :less [1 6 7 4 3]))"
+                  "(= '(2) (__ > :more [2]))"
+                  "(= [0 1 :x 2 :x 3 :x 4]  (__ #(and (pos? %) (< % %2)) :x (range 5)))"
+                  "(empty? (__ > :more ()))"
+                  "(= [0 1 :same 1 2 3 :same 5 8 13 :same 21]
+                      (take 12 (->> [0 1]
+                                    (iterate (fn [[a b]] [b (+ a b)]))
+                                    (map first) ; fibonacci numbers
+                                    (__ (fn [a b] ; both even or both odd
+                                          (= (mod a 2) (mod b 2)))
+                                        :same))))"]
+    :tags        ["medium" "seqs core-functions"]}
+
    {:_id         137
     :title       "Digits and bases"
     :description "Write a function which returns a sequence of digits
@@ -1832,6 +1850,59 @@ PS — You may want to read about K-Maps before proceeding."
                       #{#{'B 'D}
                         #{'b 'd}})"]}
 
+   {:_id         144
+    :title       "Oscilrate"
+    :description "Write an oscillating iterate: a function that takes
+an initial value and a variable number of functions. It should return
+a lazy sequence of the functions applied to the value in order, restarting
+from the first function after it hits the end."
+    :tests       ["(= (take 3 (__ 3.14 int double)) [3.14 3 3.0])"
+                  "(= (take 5 (__ 3 #(- % 3) #(+ 5 %))) [3 0 5 2 7])"
+                  "(= (take 12 (__ 0 inc dec inc dec inc)) [0 1 0 1 0 1 2 1 2 1 2 3])"]
+    :tags        ["medium" "sequences"]}
+
+   {:_id         148
+    :title       "The Big Divide"
+    :description "Write a function which calculates the sum of all natural
+numbers under n (first argument) which are evenly divisible by at least one
+of a and b (second and third argument). Numbers a and b are guaranteed to be coprimes.
+
+Note: Some test cases have a very large n, so the most obvious solution will
+exceed the time limit."
+    :tests       ["(= 0 (__ 3 17 11))"
+                  "(= 23 (__ 10 3 5))"
+                  "(= 233168 (__ 1000 3 5))"
+                  "(= \"2333333316666668\" (str (__ 100000000 3 5)))"
+                  "(= \"110389610389889610389610\"
+                      (str (__ (* 10000 10000 10000) 7 11)))"
+                  "(= \"1277732511922987429116\"
+                      (str (__ (* 10000 10000 10000) 757 809)))"
+                  "(= \"4530161696788274281\"
+                      (str (__ (* 10000 10000 1000) 1597 3571)))"]
+    :tags        ["medium" "math"]}
+
+   {:_id         158
+    :title       "Decurry"
+    :description "Write a function that accepts a curried function of unknown arity n.
+Return an equivalent function of n arguments. "
+    :tests       ["(= 10 ((__ (fn [a]
+                                (fn [b]
+                                  (fn [c]
+                                    (fn [d]
+                                      (+ a b c d))))))
+                          1 2 3 4))"
+                  "(= 24 ((__ (fn [a]
+                                (fn [b]
+                                  (fn [c]
+                                    (fn [d]
+                                      (* a b c d))))))
+                          1 2 3 4))"
+                  "(= 25 ((__ (fn [a]
+                                (fn [b]
+                                  (* a b))))
+                          5 5))"]
+    :tags        ["medium" "partial-functions"]}
+
    {:_id         171
     :title       "Intervals"
     :description "Write a function that takes a sequence of integers
@@ -1844,4 +1915,24 @@ are contained in the input sequence."
                   "(= (__ [1 1 1 1 1 1 1]) [[1 1]])"
                   "(= (__ []) [])"
                   "(= (__ [19 4 17 1 3 10 2 13 13 2 16 4 2 15 13 9 6 14 2 11])
-                      [[1 4] [6 6] [9 11] [13 17] [19 19]])"]}])
+                      [[1 4] [6 6] [9 11] [13 17] [19 19]])"]}
+
+   {:_id         177
+    :title       "Balancing Brackets"
+    :description "When parsing a snippet of code it's often a good idea to do a
+sanity check to see if all the brackets match up. Write a function that takes in
+a string and returns truthy if all square [ ] round ( ) and curly { } brackets are
+properly paired and legally nested, or returns falsey otherwise."
+    :tests       ["(__ \"This string has no brackets.\")"
+                  "(__ \"class Test {
+                          public static void main(String[] args) {
+                            System.out.println(\\\"Hello world.\\\");
+                          }
+                        }\")"
+                  "(not (__ \"(start, end]\"))"
+                  "(not (__ \"())\"))"
+                  "(not (__ \"[ { ] } \"))"
+                  "(__ \"([]([(()){()}(()(()))(([[]]({}()))())]((((()()))))))\")"
+                  "(not (__ \"([]([(()){()}(()(()))(([[]]({}([)))())]((((()()))))))\"))"
+                  "(not (__ \"[\"))"]
+    :tags        ["medium" "parsing"]}])
