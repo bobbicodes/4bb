@@ -614,7 +614,7 @@ the point is to poke at them and understand their behavior."
                   "(= [:map :set :vector :list] (map __ [{} #{} [] ()]))"]
     :restricted  ["class" "type" "Class" "vector?" "sequential?" "list?" "seq?" "map?" "set?" "instance?" "getClass"]}
 
-    {:_id         66
+   {:_id         66
     :title       "Greatest Common Divisor"
     :tests       ["(= (__ 2 4) 2)"
                   "(= (__ 10 5) 5)"
@@ -1723,6 +1723,37 @@ your function should return nil"
                                         ; 00000      00000
                   ]}
 
+   {:_id         131
+    :title       "Sum Some Set Subsets"
+    :description "Given a variable number of sets of integers, create
+a function which returns true iff all of the sets have a non-empty
+subset with an equivalent summation."
+    :tests       ["(= true (__ #{-1 1 99}
+                              #{-2 2 888}
+                              #{-3 3 7777}))"
+                  "(= false (__ #{1}
+                                #{2}
+                                #{3}
+                                #{4}))"
+                  "(= true  (__ #{1}))"
+                  "(= false (__ #{1 -3 51 9}
+                                #{0}
+                                #{9 2 81 33}))"
+                  "(= true  (__ #{1 3 5}
+                                #{9 11 4}
+                                #{-3 12 3}
+                                #{-3 4 -2 10}))"
+                  "(= false (__ #{-1 -2 -3 -4 -5 -6}
+                                #{1 2 3 4 5 6 7 8 9}))"
+                  "(= true  (__ #{1 3 5 7}
+                                #{2 4 6 8}))"
+                  "(= true  (__ #{-1 3 -5 7 -9 11 -13 15}
+                                #{1 -3 5 -7 9 -11 13 -15}
+                                #{1 -1 2 -2 4 -4 8 -8}))"
+                  "(= true  (__ #{-10 9 -8 7 -6 5 -4 3 -2 1}
+                                #{10 -9 8 -7 6 -5 4 -3 2 -1}))"]
+    :tags        ["medium" "math"]}
+
    {:_id         132
     :title       "Intervals"
     :description "Write a function that takes a two-argument predicate,
@@ -1850,6 +1881,37 @@ PS — You may want to read about K-Maps before proceeding."
                       #{#{'B 'D}
                         #{'b 'd}})"]}
 
+   {:_id         141
+    :title       "Tricky card games"
+    :description "In trick-taking card games such as bridge, spades,
+or hearts, cards are played in groups known as \"tricks\" - each player
+plays a single card, in order; the first player is said to \"lead\" to
+the trick. After all players have played, one card is said to have \"won\"
+the trick. How the winner is determined will vary by game, but generally
+the winner is the highest card played in the suit that was led. Sometimes
+(again varying by game), a particular suit will be designated \"trump\",
+meaning that its cards are more powerful than any others: if there is a
+trump suit, and any trumps are played, then the highest trump wins
+regardless of what was led.
+
+Your goal is to devise a function that can determine which of a number of
+cards has won a trick. You should accept a trump suit, and return a function
+winner. Winner will be called on a sequence of cards, and should return the
+one which wins the trick. Cards will be represented in the format returned
+by Problem 128, Recognize Playing Cards: a hash-map of :suit and a numeric
+:rank. Cards with a larger rank are stronger."
+    :tests       ["(let [notrump (__ nil)]
+                     (and (= {:suit :club :rank 9}  (notrump [{:suit :club :rank 4}
+                                                              {:suit :club :rank 9}]))
+                          (= {:suit :spade :rank 2} (notrump [{:suit :spade :rank 2}
+                                                              {:suit :club :rank 10}]))))"
+                  "(= {:suit :club :rank 10} ((__ :club) [{:suit :spade :rank 2}
+                                                          {:suit :club :rank 10}]))"
+                  "(= {:suit :heart :rank 8}
+                      ((__ :heart) [{:suit :heart :rank 6} {:suit :heart :rank 8}
+                                    {:suit :diamond :rank 10} {:suit :heart :rank 4}]))"]
+    :tags        ["medium" "game cards"]}
+
    {:_id         144
     :title       "Oscilrate"
     :description "Write an oscillating iterate: a function that takes
@@ -1881,6 +1943,38 @@ exceed the time limit."
                       (str (__ (* 10000 10000 1000) 1597 3571)))"]
     :tags        ["medium" "math"]}
 
+   {:_id         150
+    :title       "Palindromic Numbers"
+    :description "A palindromic number is a number that is the same when
+written forwards or backwards (e.g., 3, 99, 14341).
+
+Write a function which takes an integer n, as its only argument, and
+returns an increasing lazy sequence of all palindromic numbers that
+are not less than n.
+
+The most simple solution will exceed the time limit!"
+    :tests       ["(= (take 26 (__ 0))
+                      [0 1 2 3 4 5 6 7 8 9
+                       11 22 33 44 55 66 77 88 99
+                       101 111 121 131 141 151 161])"
+                  "(= (take 16 (__ 162))
+                      [171 181 191 202
+                       212 222 232 242
+                       252 262 272 282
+                       292 303 313 323])"
+                  "(= (take 6 (__ 1234550000))
+                      [1234554321 1234664321 1234774321
+                       1234884321 1234994321 1235005321])"
+                  "(= (first (__ (* 111111111 111111111)))
+                      (* 111111111 111111111))"
+                  "(= (set (take 199 (__ 0)))
+                      (set (map #(first (__ %)) (range 0 10000))))"
+                  "(= true
+                      (apply < (take 6666 (__ 9999999))))"
+                  "(= (nth (__ 0) 10101)
+                      9102019)"]
+    :tags        ["medium" "seqs math"]}
+
    {:_id         158
     :title       "Decurry"
     :description "Write a function that accepts a curried function of unknown arity n.
@@ -1902,6 +1996,71 @@ Return an equivalent function of n arguments. "
                                   (* a b))))
                           5 5))"]
     :tags        ["medium" "partial-functions"]}
+
+   {:_id         168
+    :title       "Infinite Matrix"
+    :description "In what follows, m, n, s, t denote nonnegative integers, f denotes a
+function that accepts two arguments and is defined for all nonnegative integers in both
+arguments.
+
+In mathematics, the function f can be interpreted as an infinite matrix with infinitely
+many rows and columns that, when written, looks like an ordinary matrix but its rows and
+columns cannot be written down completely, so are terminated with ellipses. In Clojure,
+such infinite matrix can be represented as an infinite lazy sequence of infinite lazy
+sequences, where the inner sequences represent rows.
+
+Write a function that accepts 1, 3 and 5 arguments
+
+  * with the argument f, it returns the infinite matrix A that has the entry in the i-th
+row and the j-th column equal to f(i,j) for i,j = 0,1,2,...;
+  * with the arguments f, m, n, it returns the infinite matrix B that equals the remainder
+of the matrix A after the removal of the first m rows and the first n columns;
+  * with the arguments f, m, n, s, t, it returns the finite s-by-t matrix that consists of
+the first t entries of each of the first s rows of the matrix B or, equivalently, that
+consists of the first s entries of each of the first t columns of the matrix B."
+    :restricted  ["for" "range" "iterate" "repeat" "cycle" "drop"]
+    :tests       ["(= (take 5 (map #(take 6 %) (__ str)))
+                       [[\"00\" \"01\" \"02\" \"03\" \"04\" \"05\"]
+                        [\"10\" \"11\" \"12\" \"13\" \"14\" \"15\"]
+                        [\"20\" \"21\" \"22\" \"23\" \"24\" \"25\"]
+                        [\"30\" \"31\" \"32\" \"33\" \"34\" \"35\"]
+                        [\"40\" \"41\" \"42\" \"43\" \"44\" \"45\"]])"
+                  "(= (take 6 (map #(take 5 %) (__ str 3 2)))
+                       [[\"32\" \"33\" \"34\" \"35\" \"36\"]
+                        [\"42\" \"43\" \"44\" \"45\" \"46\"]
+                        [\"52\" \"53\" \"54\" \"55\" \"56\"]
+                        [\"62\" \"63\" \"64\" \"65\" \"66\"]
+                        [\"72\" \"73\" \"74\" \"75\" \"76\"]
+                        [\"82\" \"83\" \"84\" \"85\" \"86\"]])"
+                  "(= (__ * 3 5 5 7)
+                       [[15 18 21 24 27 30 33]
+                        [20 24 28 32 36 40 44]
+                        [25 30 35 40 45 50 55]
+                        [30 36 42 48 54 60 66]
+                        [35 42 49 56 63 70 77]])"
+                  "(= (__ #(/ % (inc %2)) 1 0 6 4)
+                       [[1/1 1/2 1/3 1/4]
+                        [2/1 2/2 2/3 1/2]
+                        [3/1 3/2 3/3 3/4]
+                        [4/1 4/2 4/3 4/4]
+                        [5/1 5/2 5/3 5/4]
+                        [6/1 6/2 6/3 6/4]])"
+                  "(= (class (__ (juxt bit-or bit-xor)))
+                      (class (__ (juxt quot mod) 13 21))
+                      (class (lazy-seq)))"
+                  "(= (class (nth (__ (constantly 10946)) 34))
+                      (class (nth (__ (constantly 0) 5 8) 55))
+                      (class (lazy-seq)))"
+                  "(= (let [m 377 n 610 w 987
+                            check (fn [f s] (every? true? (map-indexed f s)))
+                            row (take w (nth (__ vector) m))
+                            column (take w (map first (__ vector m n)))
+                            diagonal (map-indexed #(nth %2 %) (__ vector m n w w))]
+                        (and (check #(= %2 [m %]) row)
+                              (check #(= %2 [(+ m %) n]) column)
+                              (check #(= %2 [(+ m %) (+ n %)]) diagonal)))
+                      true)"]
+    :tags        ["medium" "seqs recursion math "]}
 
    {:_id         171
     :title       "Intervals"
@@ -1935,4 +2094,28 @@ properly paired and legally nested, or returns falsey otherwise."
                   "(__ \"([]([(()){()}(()(()))(([[]]({}()))())]((((()()))))))\")"
                   "(not (__ \"([]([(()){()}(()(()))(([[]]({}([)))())]((((()()))))))\"))"
                   "(not (__ \"[\"))"]
-    :tags        ["medium" "parsing"]}])
+    :tags        ["medium" "parsing"]}
+
+   {:_id         195
+    :title       "Parentheses... Again"
+    :description "In a family of languages like Lisp, having balanced parentheses
+is a defining feature of the language. Luckily, Lisp has almost no syntax, except
+for these \"delimiters\" -- and that hardly qualifies as \"syntax\", at least in any
+useful computer programming sense.
+
+It is not a difficult exercise to find all the combinations of well-formed parentheses
+if we only have N pairs to work with. For instance, if we only have 2 pairs, we only
+have two possible combinations: \"()()\" and \"(())\". Any other combination of length 4
+is ill-formed. Can you see why?
+
+Generate all possible combinations of well-formed parentheses of length 2n (n pairs
+of parentheses). For this problem, we only consider '(' and ')', but the answer
+is similar if you work with only {} or only [].
+
+There is an interesting pattern in the numbers!"
+    :tests       ["(= [#{\"\"} #{\"()\"} #{\"()()\" \"(())\"}] (map (fn [n] (__ n)) [0 1 2]))"
+                  "(= #{\"((()))\" \"()()()\" \"()(())\" \"(())()\" \"(()())\"} (__ 3))"
+                  "(= 16796 (count (__ 10)))"
+                  "(= (nth (sort (filter #(.contains ^String % \"(()()()())\") (__ 9))) 6) \"(((()()()())(())))\")"
+                  "(= (nth (sort (__ 12)) 5000) \"(((((()()()()()))))(()))\")"]
+    :tags        ["medium" "math combinatorics"]}])
