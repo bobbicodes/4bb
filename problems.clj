@@ -1772,6 +1772,15 @@ is inserted between every two items that satisfy the predicate."
                                         :same))))"]
     :tags        ["medium" "seqs core-functions"]}
 
+   {:_id         134
+    :title       "A nil key"
+    :description "Write a function which, given a key and map, returns true iff
+the map contains an entry with that key and its value is nil."
+    :tests       ["(true?  (__ :a {:a nil :b 2}))"
+                  "(false? (__ :b {:a nil :b 2}))"
+                  "(false? (__ :c {:a nil :b 2}))"]
+    :tags        ["elementary" "maps"]}
+
    {:_id         137
     :title       "Digits and bases"
     :description "Write a function which returns a sequence of digits
