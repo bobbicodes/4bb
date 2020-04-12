@@ -2101,53 +2101,53 @@ The most simple solution will exceed the time limit!"
                       9102019)"]
     :tags        ["medium" "seqs math"]}
 
-    {:_id         153
-     :title       "Pairwise Disjoint Sets"
-     :description "Given a set of sets, create a function which returns true if no
+   {:_id         153
+    :title       "Pairwise Disjoint Sets"
+    :description "Given a set of sets, create a function which returns true if no
 two of those sets have any elements in common (1) and false otherwise. Some of the
 test cases are a bit tricky, so pay a little more attention to them.
 
 (1) Such sets are usually called pairwise disjoint or mutually disjoint."
-     :tests       ["(= (__ #{#{\\U} #{\\s} #{\\e \\R \\E} #{\\P \\L} #{\\.}})
+    :tests       ["(= (__ #{#{\\U} #{\\s} #{\\e \\R \\E} #{\\P \\L} #{\\.}})
                        true)"
-                   "(= (__ #{#{:a :b :c :d :e}
+                  "(= (__ #{#{:a :b :c :d :e}
                              #{:a :b :c :d}
                              #{:a :b :c}
                              #{:a :b}
                              #{:a}})
                        false)"
-                   "(= (__ #{#{[1 2 3] [4 5]}
+                  "(= (__ #{#{[1 2 3] [4 5]}
                              #{[1 2] [3 4 5]}
                              #{[1] [2] 3 4 5}
                              #{1 2 [3 4] [5]}})
                        true)"
-                   "(= (__ #{#{'a 'b}
+                  "(= (__ #{#{'a 'b}
                              #{'c 'd 'e}
                              #{'f 'g 'h 'i}
                              #{''a ''c ''f}})
                        true)"
-                   "(= (__ #{#{'(:x :y :z) '(:x :y) '(:z) '()}
+                  "(= (__ #{#{'(:x :y :z) '(:x :y) '(:z) '()}
                              #{#{:x :y :z} #{:x :y} #{:z} #{}}
                              #{'[:x :y :z] [:x :y] [:z] [] {}}})
                        false)"
-                   "(= (__ #{#{(= \"true\") false}
+                  "(= (__ #{#{(= \"true\") false}
                              #{:yes :no}
                              #{(class 1) 0}
                              #{(symbol \"true\") 'false}
                              #{(keyword \"yes\") ::no}
                              #{(class '1) (int \\0)}})
                        false)"
-                   "(= (__ (set [(set [distinct?])
+                  "(= (__ (set [(set [distinct?])
                                  (set [#(-> %) #(-> %)])
                                  (set [#(-> %) #(-> %) #(-> %)])
                                  (set [#(-> %) #(-> %) #(-> %)])]))
                        true)"
-                   "(= (__ #{#{(#(-> *)) + (quote mapcat) #_ nil}
+                  "(= (__ #{#{(#(-> *)) + (quote mapcat) #_ nil}
                              #{'+ '* mapcat (comment mapcat)}
                              #{(do) set contains? nil?}
                              #{, , , #_, , empty?}})
                        false)"]
-     :tags        ["easy" "set-theory"]}
+    :tags        ["easy" "set-theory"]}
 
    {:_id         156
     :title       "Map Defaults"
