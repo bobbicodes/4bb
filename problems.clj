@@ -2076,6 +2076,17 @@ are contained in the input sequence."
                   "(= (__ [19 4 17 1 3 10 2 13 13 2 16 4 2 15 13 9 6 14 2 11])
                       [[1 4] [6 6] [9 11] [13 17] [19 19]])"]}
 
+   {:_id         173
+    :title       "Intro to Destructuring 2"
+    :description "Sequential destructuring allows you to bind symbols to parts of
+sequential things (vectors, lists, seqs, etc.): (let [bindings* ] exprs*) Complete
+the bindings so all let-parts evaluate to 3."
+    :tests       ["(= 3
+                      (let [[__] [+ (range 3)]] (apply __))
+                      (let [[[__] b] [[+ 1] 2]] (__ b))
+                      (let [[__] [inc 2]] (__)))"]
+    :tags        ["easy" "destructuring"]}
+
    {:_id         177
     :title       "Balancing Brackets"
     :description "When parsing a snippet of code it's often a good idea to do a
