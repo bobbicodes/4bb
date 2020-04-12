@@ -76,7 +76,7 @@
         (every? true? (map safe-eval replaced)))))
 
 (defn submit [ans n]
-  (let [tests (:tests (problems (dec n)))
+  (let [tests (:tests (get-problem n))
         replaced (map #(str/replace % "__" ans) tests)]
     (if (= ans "") (reject)
         (check (map safe-eval replaced)))))
