@@ -17,6 +17,11 @@
         sc       (into (sorted-set) prob-ids)]
     (first (subseq sc > id))))
 
+(defn restricted-fns [ans res-fns]
+  (let [ans-sym (into #{} (filter symbol? (flatten (read-string ans))))
+        res-sym (into #{} (map symbol res-fns))]
+    (clojure.set/intersection ans-sym res-sym)))
+
 (defn most-recent-answer []
   (->> (io/file "answers")
        (.listFiles)
@@ -41,11 +46,19 @@
     (println (str "\n#" id ": " (:title prob)))
     (println (str "\n" (:description prob) "\n"))
     (run! println (:tests prob))
+    (when-let [restricted (:restricted prob)]
+      (println (colorize (str "\n" "Special Restrictions:" restricted) :red)))
     (println "")
     (spit (str "answers/" n) (read-line))))
 
 (defn reject []
   (println (colorize "\nSorry, try again..." :red))
+  (Thread/sleep 1500)
+  (-main))
+
+(defn reject-fns [coll]
+  (println (colorize "\nSorry, try again..." :red))
+  (println (colorize (str "You are using restricted functions: " coll) :red))
   (Thread/sleep 1500)
   (-main))
 
@@ -66,26 +79,35 @@
          false)))
 
 (defn test-ans [answer]
-  (let [name     (.getName answer)
-        n        (Integer/parseInt name)
-        ans      (slurp answer)
-        problem  (get-problem n)
-        tests    (:tests problem)
-        replaced (mapv #(str/replace % "__" ans) tests)]
-    (if (= "" ans) false
-        (every? true? (map safe-eval replaced)))))
+  (let [name       (.getName answer)
+        n          (Integer/parseInt name)
+        ans        (slurp answer)
+        problem    (get-problem n)
+        tests      (:tests problem)
+        replaced   (mapv #(str/replace % "__" ans) tests)
+        restricted (:restricted problem)
+        bad-fns    (restricted-fns (first replaced) restricted)]
+    (cond
+      (= "" ans)    false
+      (seq bad-fns) false
+      :else         (every? true? (map safe-eval replaced)))))
 
 (defn submit [ans n]
-  (let [tests (:tests (problems (dec n)))
-        replaced (map #(str/replace % "__" ans) tests)]
-    (if (= ans "") (reject)
-        (check (map safe-eval replaced)))))
+  (let [problem    (get-problem n)
+        tests      (:tests problem)
+        replaced   (map #(str/replace % "__" ans) tests)
+        restricted (:restricted problem)
+        bad-fns    (restricted-fns (first replaced) restricted)]
+    (cond
+      (= ans "")    (reject)
+      (seq bad-fns) (reject-fns bad-fns)
+      :else         (check (map safe-eval replaced)))))
 
 (defn -main []
-  (let [ans (most-recent-answer)
+  (let [ans      (most-recent-answer)
         correct? (test-ans ans)
-        ans-n (Integer/parseInt (.getName ans))
-        n (if correct? (get-next-problem-id ans-n) ans-n)]
+        ans-n    (Integer/parseInt (.getName ans))
+        n        (if correct? (get-next-problem-id ans-n) ans-n)]
     (prompt n)
     (submit (slurp (str "answers/" n)) n)))
 

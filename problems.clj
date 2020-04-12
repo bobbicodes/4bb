@@ -1635,6 +1635,13 @@ Fun fact: Gus is the name of the 4Clojure dragon."
                        ((fn [x] (__ x x))
                         '(fn [x] (__ x x))))"]}
 
+   {:_id         126
+    :title       "Through the Looking Class"
+    :description "Enter a value which satisfies the following:"
+    :tests       ["(let [x __]
+                     (and (= (class x) x) x))"]
+    :tags        ["easy" "fun brain-teaser"]}
+
    {:_id         127
     :title       "Love Triangle"
     :description "Everyone loves triangles,
@@ -1723,6 +1730,29 @@ your function should return nil"
                                         ; 00000      00000
                   ]}
 
+   {:_id         128
+    :title       "Recognize Playing Cards"
+    :description "A standard American deck of playing cards has four suits - spades,
+hearts, diamonds, and clubs - and thirteen cards in each suit. Two is the lowest rank,
+followed by other integers up to ten; then the jack, queen, king, and ace.
+
+It's convenient for humans to represent these cards as suit/rank pairs, such as H5 or DQ:
+the heart five and diamond queen respectively. But these forms are not convenient for
+programmers, so to write a card game you need some way to parse an input string into
+meaningful components. For purposes of determining rank, we will define the cards to
+be valued from 0 (the two) to 12 (the ace)
+
+Write a function which converts (for example) the string \"SJ\" into a map of
+{:suit :spade,:rank 9}. A ten will always be represented with the single character
+\"T\", rather than the two characters \"10\"."
+    :tests       ["(= {:suit :diamond :rank 10} (__ \"DQ\"))"
+                  "(= {:suit :heart :rank 3} (__ \"H5\"))"
+                  "(= {:suit :club :rank 12} (__ \"CA\"))"
+                  "(= (range 13) (map (comp :rank __ str)
+                                      '[S2 S3 S4 S5 S6 S7
+                                        S8 S9 ST SJ SQ SK SA]))"]
+    :tags        ["easy" "strings game"]}
+
    {:_id         131
     :title       "Sum Some Set Subsets"
     :description "Given a variable number of sets of integers, create
@@ -1771,6 +1801,29 @@ is inserted between every two items that satisfy the predicate."
                                           (= (mod a 2) (mod b 2)))
                                         :same))))"]
     :tags        ["medium" "seqs core-functions"]}
+
+   {:_id         134
+    :title       "A nil key"
+    :description "Write a function which, given a key and map, returns true iff
+the map contains an entry with that key and its value is nil."
+    :tests       ["(true?  (__ :a {:a nil :b 2}))"
+                  "(false? (__ :b {:a nil :b 2}))"
+                  "(false? (__ :c {:a nil :b 2}))"]
+    :tags        ["elementary" "maps"]}
+
+   {:_id         135
+    :title       "Infix Calculator"
+    :description "Your friend Joe is always whining about Lisps using the prefix
+notation for math. Show him how you could easily write a function that does math
+using the infix notation. Is your favorite language that flexible, Joe? Write a
+function that accepts a variable length mathematical expression consisting of
+numbers and the operations +, -, *, and /. Assume a simple calculator that does
+not do precedence and instead just calculates left to right."
+    :tests       ["(= 7  (__ 2 + 5))"
+                  "(= 42 (__ 38 + 48 - 2 / 2))"
+                  "(= 8  (__ 10 / 2 - 1 * 2))"
+                  "(= 72 (__ 20 / 2 + 2 + 4 + 8 - 6 - 10 * 9))"]
+    :tags        ["easy" "higher-order-functions math"]}
 
    {:_id         137
     :title       "Digits and bases"
@@ -1912,6 +1965,16 @@ by Problem 128, Recognize Playing Cards: a hash-map of :suit and a numeric
                                     {:suit :diamond :rank 10} {:suit :heart :rank 4}]))"]
     :tags        ["medium" "game cards"]}
 
+   {:_id         143
+    :title       "dot product"
+    :description "Create a function that computes the dot product of two sequences.
+You may assume that the vectors will have the same length."
+    :tests       ["(= 0 (__ [0 1 0] [1 0 0]))"
+                  "(= 3 (__ [1 1 1] [1 1 1]))"
+                  "(= 32 (__ [1 2 3] [4 5 6]))"
+                  "(= 256 (__ [2 5 6] [100 10 1]))"]
+    :tags        ["easy" "seqs math"]}
+
    {:_id         144
     :title       "Oscilrate"
     :description "Write an oscillating iterate: a function that takes
@@ -1922,6 +1985,69 @@ from the first function after it hits the end."
                   "(= (take 5 (__ 3 #(- % 3) #(+ 5 %))) [3 0 5 2 7])"
                   "(= (take 12 (__ 0 inc dec inc dec inc)) [0 1 0 1 0 1 2 1 2 1 2 3])"]
     :tags        ["medium" "sequences"]}
+
+   {:_id         145
+    :title       "For the win"
+    :description "Clojure's for macro is a tremendously versatile mechanism for
+producing a sequence based on some other sequence(s). It can take some time to
+understand how to use it properly, but that investment will be paid back with
+clear, concise sequence-wrangling later. With that in mind, read over these for
+expressions and try to see how each of them produces the same result."
+    :tests       ["(= __ (for [x (range 40)
+                               :when (= 1 (rem x 4))]
+                           x))"
+                  "(= __ (for [x (iterate #(+ 4 %) 0)
+                               :let [z (inc x)]
+                               :while (< z 40)]
+                           z))"
+                  "(= __ (for [[x y] (partition 2 (range 20))]
+                           (+ x y)))"]
+    :tags        ["elementary" "core-functions seqs"]}
+
+   {:_id         146
+    :title       "Trees into tables"
+    :description "Because Clojure's for macro allows you to \"walk\" over multiple
+sequences in a nested fashion, it is excellent for transforming all sorts of
+sequences. If you don't want a sequence as your final output (say you want a map),
+you are often still best-off using for, because you can produce a sequence and feed
+it into a map, for example.
+
+For this problem, your goal is to \"flatten\" a map of hashmaps. Each key in your
+output map should be the \"path\" (1) that you would have to take in the original
+map to get to a value, so for example {1 {2 3}} should result in {[1 2] 3}. You
+only need to flatten one level of maps: if one of the values is a map, just leave
+it alone.
+
+(1) That is, (get-in original [k1 k2]) should be the same as (get result [k1 k2])"
+    :tests       ["(= (__ '{a {p 1, q 2}
+                            b {m 3, n 4}})
+                      '{[a p] 1, [a q] 2
+                        [b m] 3, [b n] 4})"
+                  "(= (__ '{[1] {a b c d}
+                            [2] {q r s t u v w x}})
+                      '{[[1] a] b, [[1] c] d,
+                        [[2] q] r, [[2] s] t,
+                        [[2] u] v, [[2] w] x})"
+                  "(= (__ '{m {1 [a b c] 3 nil}})
+                      '{[m 1] [a b c], [m 3] nil})"]
+    :tags        ["easy" "seqs maps"]}
+
+   {:_id         147
+    :title       "Pascal's Trapezoid"
+    :description "Write a function that, for any given input vector of numbers, returns
+an infinite lazy sequence of vectors, where each next one is constructed from the
+previous following the rules used in Pascal's Triangle. For example, for [3 1 2], the
+next row is [3 4 3 2].
+
+Beware of arithmetic overflow! In clojure (since version 1.3 in 2011), if you use an
+arithmetic operator like + and the result is too large to fit into a 64-bit integer,
+an exception is thrown. You can use +' to indicate that you would rather overflow into
+Clojure's slower, arbitrary-precision bigint."
+    :tests       ["(= (second (__ [2 3 2])) [2 5 5 2])"
+                  "(= (take 5 (__ [1])) [[1] [1 1] [1 2 1] [1 3 3 1] [1 4 6 4 1]])"
+                  "(= (take 2 (__ [3 1 2])) [[3 1 2] [3 4 3 2]])"
+                  "(= (take 100 (__ [2 4 2])) (rest (take 101 (__ [2 2]))))"]
+    :tags        ["easy" "seqs"]}
 
    {:_id         148
     :title       "The Big Divide"
@@ -1975,6 +2101,77 @@ The most simple solution will exceed the time limit!"
                       9102019)"]
     :tags        ["medium" "seqs math"]}
 
+   {:_id         153
+    :title       "Pairwise Disjoint Sets"
+    :description "Given a set of sets, create a function which returns true if no
+two of those sets have any elements in common (1) and false otherwise. Some of the
+test cases are a bit tricky, so pay a little more attention to them.
+
+(1) Such sets are usually called pairwise disjoint or mutually disjoint."
+    :tests       ["(= (__ #{#{\\U} #{\\s} #{\\e \\R \\E} #{\\P \\L} #{\\.}})
+                       true)"
+                  "(= (__ #{#{:a :b :c :d :e}
+                             #{:a :b :c :d}
+                             #{:a :b :c}
+                             #{:a :b}
+                             #{:a}})
+                       false)"
+                  "(= (__ #{#{[1 2 3] [4 5]}
+                             #{[1 2] [3 4 5]}
+                             #{[1] [2] 3 4 5}
+                             #{1 2 [3 4] [5]}})
+                       true)"
+                  "(= (__ #{#{'a 'b}
+                             #{'c 'd 'e}
+                             #{'f 'g 'h 'i}
+                             #{''a ''c ''f}})
+                       true)"
+                  "(= (__ #{#{'(:x :y :z) '(:x :y) '(:z) '()}
+                             #{#{:x :y :z} #{:x :y} #{:z} #{}}
+                             #{'[:x :y :z] [:x :y] [:z] [] {}}})
+                       false)"
+                  "(= (__ #{#{(= \"true\") false}
+                             #{:yes :no}
+                             #{(class 1) 0}
+                             #{(symbol \"true\") 'false}
+                             #{(keyword \"yes\") ::no}
+                             #{(class '1) (int \\0)}})
+                       false)"
+                  "(= (__ (set [(set [distinct?])
+                                 (set [#(-> %) #(-> %)])
+                                 (set [#(-> %) #(-> %) #(-> %)])
+                                 (set [#(-> %) #(-> %) #(-> %)])]))
+                       true)"
+                  "(= (__ #{#{(#(-> *)) + (quote mapcat) #_ nil}
+                             #{'+ '* mapcat (comment mapcat)}
+                             #{(do) set contains? nil?}
+                             #{, , , #_, , empty?}})
+                       false)"]
+    :tags        ["easy" "set-theory"]}
+
+   {:_id         156
+    :title       "Map Defaults"
+    :description "When retrieving values from a map, you can specify default
+values in case the key is not found:
+
+(= 2 (:foo {:bar 0, :baz 1} 2))
+
+However, what if you want the map itself to contain the default values? Write a
+function which takes a default value and a sequence of keys and constructs a map."
+    :tests       ["(= (__ 0 [:a :b :c]) {:a 0 :b 0 :c 0})"
+                  "(= (__ \"x\" [1 2 3]) {1 \"x\" 2 \"x\" 3 \"x\"})"
+                  "(= (__ [:a :b] [:foo :bar]) {:foo [:a :b] :bar [:a :b]})"]
+    :tags        ["elementary" "seqs"]}
+
+   {:_id         157
+    :title       "Indexing Sequences"
+    :description "Transform a sequence into a sequence of pairs containing the original
+elements along with their index."
+    :tests       ["(= (__ [:a :b :c]) [[:a 0] [:b 1] [:c 2]])"
+                  "(= (__ [0 1 3]) '((0 0) (1 1) (3 2)))"
+                  "(= (__ [[:foo] {:bar :baz}]) [[[:foo] 0] [{:bar :baz} 1]])"]
+    :tags        ["easy" "seqs"]}
+
    {:_id         158
     :title       "Decurry"
     :description "Write a function that accepts a curried function of unknown arity n.
@@ -1996,6 +2193,47 @@ Return an equivalent function of n arguments. "
                                   (* a b))))
                           5 5))"]
     :tags        ["medium" "partial-functions"]}
+
+   {:_id         161
+    :title       "Subset and Superset"
+    :description "Set A is a subset of set B, or equivalently B is a superset of A,
+    if A is \"contained\" inside B. A and B may coincide."
+    :tests       ["(clojure.set/superset? __ #{2})"
+                  "(clojure.set/subset? #{1} __)"
+                  "(clojure.set/superset? __ #{1 2})"
+                  "(clojure.set/subset? #{1 2} __)"]
+    :tags        ["elementary" "set-theory"]}
+
+   {:_id         162
+    :title       "Logical falsity and truth"
+    :description "In Clojure, only nil and false represent the values of logical
+falsity in conditional tests - anything else is logical truth."
+    :tests       ["(= __ (if-not false 1 0))"
+                  "(= __ (if-not nil 1 0))"
+                  "(= __ (if true 1 0))"
+                  "(= __ (if [] 1 0))"
+                  "(= __ (if [0] 1 0))"
+                  "(= __ (if 0 1 0))"
+                  "(= __ (if 1 1 0))"]
+    :tags        ["elementary" "logic"]}
+
+   {:_id         166
+    :title       "Comparisons"
+    :description "For any orderable data type it's possible to derive all of the
+basic comparison operations (<, ≤, =, ≠, ≥, and >) from a single operation (any
+operator but = or ≠ will work). Write a function that takes three arguments, a
+less than operator for the data and two items to compare. The function should
+return a keyword describing the relationship between the two items. The keywords
+for the relationship between x and y are as follows:
+
+  x = y → :eq
+  x > y → :gt
+  x < y → :lt"
+    :tests       ["(= :gt (__ < 5 1))"
+                  "(= :eq (__ (fn [x y] (< (count x) (count y))) \"pear\" \"plum\"))"
+                  "(= :lt (__ (fn [x y] (< (mod x 5) (mod y 5))) 21 3))"
+                  "(= :gt (__ > 0 2))"]
+    :tags        ["easy"]}
 
    {:_id         168
     :title       "Infinite Matrix"
@@ -2075,6 +2313,17 @@ are contained in the input sequence."
                   "(= (__ []) [])"
                   "(= (__ [19 4 17 1 3 10 2 13 13 2 16 4 2 15 13 9 6 14 2 11])
                       [[1 4] [6 6] [9 11] [13 17] [19 19]])"]}
+
+   {:_id         173
+    :title       "Intro to Destructuring 2"
+    :description "Sequential destructuring allows you to bind symbols to parts of
+sequential things (vectors, lists, seqs, etc.): (let [bindings* ] exprs*) Complete
+the bindings so all let-parts evaluate to 3."
+    :tests       ["(= 3
+                      (let [[__] [+ (range 3)]] (apply __))
+                      (let [[[__] b] [[+ 1] 2]] (__ b))
+                      (let [[__] [inc 2]] (__)))"]
+    :tags        ["easy" "destructuring"]}
 
    {:_id         177
     :title       "Balancing Brackets"
