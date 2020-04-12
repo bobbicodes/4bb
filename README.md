@@ -21,4 +21,4 @@ $ bb tests.clj
 
 ## TODO
 
-- [ ] Reject answers containing "restricted" functions
+- [x] Reject answers containing "restricted" functions
